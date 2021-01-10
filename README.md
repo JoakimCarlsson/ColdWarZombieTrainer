@@ -1,5 +1,5 @@
 # ColdWarZombieTrainer
 Cold War Zombie Trainer
 
-# Credits:
+## Credits:
 * Theme: **AngryCarrot789** https://github.com/AngryCarrot789/WPFDarkTheme
