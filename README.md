@@ -1,8 +1,8 @@
 # ColdWarZombieTrainer
 Cold War Zombie Trainer
 
-## Working Features:
+### Working Features:
 * God Mode
 
-## Credits:
+### Credits:
 * Theme: **AngryCarrot789** https://github.com/AngryCarrot789/WPFDarkTheme
