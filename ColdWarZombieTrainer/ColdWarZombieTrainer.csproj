@@ -4,10 +4,17 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="Themes\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Memory">
+      <HintPath>..\..\CSGO-Simple-External-Cheat\SimpleExternal\Memory\bin\Release\Memory.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
