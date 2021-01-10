@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColdWarZombieTrainer", "ColdWarZombieTrainer\ColdWarZombieTrainer.csproj", "{AD0BA2C5-E85D-499C-95D8-92DF380C414F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD0BA2C5-E85D-499C-95D8-92DF380C414F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD0BA2C5-E85D-499C-95D8-92DF380C414F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD0BA2C5-E85D-499C-95D8-92DF380C414F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD0BA2C5-E85D-499C-95D8-92DF380C414F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D96D5638-62C9-4088-857E-D3B93C9ADBAF}
+	EndGlobalSection
+EndGlobal
