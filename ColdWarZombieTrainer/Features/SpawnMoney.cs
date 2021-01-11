@@ -3,20 +3,20 @@ using Memory;
 
 namespace ColdWarZombieTrainer.Features
 {
-    class SpeedHack
+    class SpawnMoney
     {
         private IntPtr _baseAddress;
         private NativeMemory _memory;
 
-        public SpeedHack(IntPtr baseAddress, NativeMemory memory)
+        public SpawnMoney(IntPtr baseAddress, NativeMemory memory)
         {
             _baseAddress = baseAddress;
             _memory = memory;
         }
 
-        public void SetSpeed(float speed)
+        public void InfiniteMoney()
         {
-            _memory.Write(false, speed, _baseAddress + Offsets.PlayerBase, (IntPtr)Offsets.RunSpeed);
+             _memory.Write<int>(true, 13337, _baseAddress + Offsets.PlayerBase, (IntPtr)Offsets.Points);
         }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ColdWarZombieTrainer
+﻿namespace ColdWarZombieTrainer
 {
     class Offsets
     {
@@ -11,5 +7,6 @@ namespace ColdWarZombieTrainer
         public static int GodMode = 0xE67;
         public static int RunSpeed = 0x5C30;
         public static int Ammo = 0x13D4;
+        public static int Points = 0x5CE4;
     }
 }

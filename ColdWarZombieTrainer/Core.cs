@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 using System.Threading;
 using ColdWarZombieTrainer.Features;
 using Memory;
@@ -20,6 +18,7 @@ namespace ColdWarZombieTrainer
         internal GodMode godMode;
         internal SpeedHack speedHack;
         internal InfiniteAmmo infiniteAmmo;
+        internal SpawnMoney moneyHack;
 
         public Core(WpfConsole console)
         {
@@ -41,6 +40,7 @@ namespace ColdWarZombieTrainer
             godMode = new GodMode(_baseAddress, _memory);
             speedHack = new SpeedHack(_baseAddress, _memory);
             infiniteAmmo = new InfiniteAmmo(_baseAddress, _memory);
+            moneyHack = new SpawnMoney(_baseAddress, _memory);
         }
 
         private void Attach(Process process)

@@ -1,20 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Accessibility;
+using ColdWarZombieTrainer.Utils;
 
 namespace ColdWarZombieTrainer
 {
@@ -23,6 +10,7 @@ namespace ColdWarZombieTrainer
         private WpfConsole _console;
         private bool _started = false;
         private Core _core;
+        private KeyUtils _keyUtils;
 
         private readonly BackgroundWorker _worker = new BackgroundWorker();
 
@@ -31,6 +19,7 @@ namespace ColdWarZombieTrainer
         {
             InitializeComponent();
             _console = new WpfConsole(Console);
+            _keyUtils = new KeyUtils();
         }
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
@@ -94,19 +83,19 @@ namespace ColdWarZombieTrainer
 
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (_started)
-            {
-                while (true)
-                {
-                    if (_worker.CancellationPending)
-                    {
-                        e.Cancel = true;
-                        break;
-                    }
+            if (!_started)
+                return;
 
-                    _core.infiniteAmmo.DoInfiniteAmmo();
-                    Thread.Sleep(10);
+            while (true)
+            {
+                if (_worker.CancellationPending)
+                {
+                    e.Cancel = true;
+                    break;
                 }
+
+                _core.infiniteAmmo.DoInfiniteAmmo();
+                Thread.Sleep(10);
             }
         }
 
@@ -115,6 +104,14 @@ namespace ColdWarZombieTrainer
             _console.WriteLine("Infinite Ammo Disabled");
             _worker.DoWork -= worker_DoWork;
             _worker.CancelAsync();
+        }
+
+        private void InfiniteMoneyHack(object sender, RoutedEventArgs e)
+        {
+            if (_started)
+            {
+                _core.moneyHack.InfiniteMoney();
+            }
         }
     }
 }
