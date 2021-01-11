@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Threading;
 using System.Windows;
-using ColdWarZombieTrainer.Utils;
 
 namespace ColdWarZombieTrainer
 {
@@ -10,16 +9,15 @@ namespace ColdWarZombieTrainer
         private WpfConsole _console;
         private bool _started = false;
         private Core _core;
-        private KeyUtils _keyUtils;
 
-        private readonly BackgroundWorker _worker = new BackgroundWorker();
+        private readonly BackgroundWorker _backgroundWorker = new BackgroundWorker();
 
+        private bool _infiniteAmmo = false;
+        private bool _infiniteMoney = false;
 
         public MainWindow()
         {
             InitializeComponent();
-            _console = new WpfConsole(Console);
-            _keyUtils = new KeyUtils();
         }
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
@@ -75,42 +73,63 @@ namespace ColdWarZombieTrainer
 
         private void InfiniteAmmoEnable(object sender, RoutedEventArgs e)
         {
-            _console.WriteLine("Infinite Ammo Enabled");
-            _worker.DoWork += worker_DoWork;
-            _worker.WorkerSupportsCancellation = true;
-            _worker.RunWorkerAsync();
+            if (_started)
+            {
+                _console.WriteLine("Infinite Ammo Enabled");
+                _infiniteAmmo = true;
+            }
+
         }
 
-        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        private void BackgroundWorkerDoWork(object sender, DoWorkEventArgs e)
         {
-            if (!_started)
-                return;
-
             while (true)
             {
-                if (_worker.CancellationPending)
-                {
-                    e.Cancel = true;
-                    break;
-                }
+                Thread.Sleep(100);
 
-                _core.infiniteAmmo.DoInfiniteAmmo();
-                Thread.Sleep(10);
+                if (!_started)
+                    continue;
+
+                if (_infiniteAmmo)
+                    _core.infiniteAmmo.DoInfiniteAmmo();
+
+                if (_infiniteMoney)
+                    _core.moneyHack.InfiniteMoney();
             }
         }
 
         private void InfiniteAmmoDisable(object sender, RoutedEventArgs e)
         {
-            _console.WriteLine("Infinite Ammo Disabled");
-            _worker.DoWork -= worker_DoWork;
-            _worker.CancelAsync();
+            if (_started)
+            {
+                _console.WriteLine("Infinite Ammo Disabled");
+                _infiniteAmmo = false;
+            }
+
         }
 
         private void InfiniteMoneyHack(object sender, RoutedEventArgs e)
         {
             if (_started)
             {
-                _core.moneyHack.InfiniteMoney();
+                _console.WriteLine("Infinite Money Enabled");
+                _infiniteMoney = true;
+            }
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            _console = new WpfConsole(Console);
+            _backgroundWorker.DoWork += BackgroundWorkerDoWork;
+            _backgroundWorker.RunWorkerAsync();
+        }
+
+        private void InfiniteMoneyDisable(object sender, RoutedEventArgs e)
+        {
+            if (_started)
+            {
+                _console.WriteLine("Infinite Money Disabled");
+                _infiniteMoney = false;
             }
         }
     }

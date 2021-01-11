@@ -15,18 +15,10 @@ namespace ColdWarZombieTrainer.Features
 
         public void DoInfiniteAmmo()
         {
-            try
+            for (int i = 1; i < 6; i++)
             {
-                for (int i = 1; i < 6; i++)
-                {
-                    _memory.Write(false, 5, _baseAddress + Offsets.PlayerBase, (IntPtr)Offsets.Ammo + (i * 0x4));
-                }
-
+                _memory.Write(false, 5, _baseAddress + Offsets.PlayerBase, (IntPtr)Offsets.Ammo + (i * 0x4));
             }
-            catch
-            {
-            }
-
         }
     }
 }
