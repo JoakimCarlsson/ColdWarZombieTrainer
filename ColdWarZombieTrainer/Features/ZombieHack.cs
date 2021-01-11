@@ -24,9 +24,7 @@ namespace ColdWarZombieTrainer.Features
 
         public void OneHpZombies()
         {
-            int count = _memory.Read<int>(_zmGlobalBase + Offsets.ZombieGlobalClass.ZombieLeftCount);
-
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < 120; i++)
             {
                 _memory.Write(false, 1, (_zmBotListBase + (Offsets.ZombieBotListBase.BotArraySizeOffset * i) + Offsets.ZombieBotListBase.BotHealth));
                 _memory.Write(false, 1, (_zmBotListBase + (Offsets.ZombieBotListBase.BotArraySizeOffset * i) + Offsets.ZombieBotListBase.BotMaxHealth));
@@ -42,10 +40,7 @@ namespace ColdWarZombieTrainer.Features
             Buffer.BlockCopy(BitConverter.GetBytes(newEnemyPosition.Y), 0, enemyPosBuffer, 4, 4);
             Buffer.BlockCopy(BitConverter.GetBytes(newEnemyPosition.Z), 0, enemyPosBuffer, 8, 4);
 
-
-            int count = _memory.Read<int>(_zmGlobalBase + Offsets.ZombieGlobalClass.ZombieLeftCount);
-
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < 120; i++)
                 _memory.WriteBytes(_zmBotListBase + (Offsets.ZombieBotListBase.BotArraySizeOffset * i) + Offsets.ZombieBotListBase.Coords, enemyPosBuffer);
         }
 
