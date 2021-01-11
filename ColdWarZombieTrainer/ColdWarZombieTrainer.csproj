@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <Reference Include="Memory">
-      <HintPath>..\..\CSGO-Simple-External-Cheat\SimpleExternal\Memory\bin\Release\Memory.dll</HintPath>
+      <HintPath>..\..\CSGO-Simple-External-Cheat\SimpleExternal\Memory\bin\Debug\Memory.dll</HintPath>
     </Reference>
   </ItemGroup>
 

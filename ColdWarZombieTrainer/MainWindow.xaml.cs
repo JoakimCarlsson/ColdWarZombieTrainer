@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Accessibility;
 
 namespace ColdWarZombieTrainer
 {
@@ -21,6 +23,9 @@ namespace ColdWarZombieTrainer
         private WpfConsole _console;
         private bool _started = false;
         private Core _core;
+
+        private readonly BackgroundWorker _worker = new BackgroundWorker();
+
 
         public MainWindow()
         {
@@ -59,6 +64,57 @@ namespace ColdWarZombieTrainer
                 _console.WriteLine("God Mode Disabled");
                 _core.godMode.DisableGodMode();
             }
+        }
+
+        private void SpeedHackEnabled(object sender, RoutedEventArgs e)
+        {
+            if (_started)
+            {
+                _console.WriteLine("Speed Hack Enabled");
+                _core.speedHack.SetSpeed((float)SpeedHackValueSlider.Value);
+            }
+        }
+
+        private void SpeedHackDisable(object sender, RoutedEventArgs e)
+        {
+            if (_started)
+            {
+                _console.WriteLine("Speed Hack Disabled");
+                _core.speedHack.SetSpeed(1f);
+            }
+        }
+
+        private void InfiniteAmmoEnable(object sender, RoutedEventArgs e)
+        {
+            _console.WriteLine("Infinite Ammo Enabled");
+            _worker.DoWork += worker_DoWork;
+            _worker.WorkerSupportsCancellation = true;
+            _worker.RunWorkerAsync();
+        }
+
+        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (_started)
+            {
+                while (true)
+                {
+                    if (_worker.CancellationPending)
+                    {
+                        e.Cancel = true;
+                        break;
+                    }
+
+                    _core.infiniteAmmo.DoInfiniteAmmo();
+                    Thread.Sleep(10);
+                }
+            }
+        }
+
+        private void InfiniteAmmoDisable(object sender, RoutedEventArgs e)
+        {
+            _console.WriteLine("Infinite Ammo Disabled");
+            _worker.DoWork -= worker_DoWork;
+            _worker.CancelAsync();
         }
     }
 }

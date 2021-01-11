@@ -18,6 +18,8 @@ namespace ColdWarZombieTrainer
         private WpfConsole _console;
 
         internal GodMode godMode;
+        internal SpeedHack speedHack;
+        internal InfiniteAmmo infiniteAmmo;
 
         public Core(WpfConsole console)
         {
@@ -37,6 +39,8 @@ namespace ColdWarZombieTrainer
             Attach(processes[0]);
 
             godMode = new GodMode(_baseAddress, _memory);
+            speedHack = new SpeedHack(_baseAddress, _memory);
+            infiniteAmmo = new InfiniteAmmo(_baseAddress, _memory);
         }
 
         private void Attach(Process process)

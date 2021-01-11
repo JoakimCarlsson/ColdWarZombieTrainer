@@ -12,10 +12,13 @@
         <Label Content="Console" HorizontalAlignment="Left" Margin="10,233,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.678,1.548"/>
 
         <CheckBox Content="God Mode" Name="GodModeCheckBox" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Checked="GodModeEnable" Unchecked="GodModeDisable"/>
+        <CheckBox Content="Speed Hack" Name="SpeedHackCheckBox" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Checked="SpeedHackEnabled" Unchecked="SpeedHackDisable"/>
+        <CheckBox Content="Infinite Ammo" Name="InfiniteAmmoCheckBox"  HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Width="101" Checked="InfiniteAmmoEnable" Unchecked="InfiniteAmmoDisable"/>
 
         <Button Content="Start" HorizontalAlignment="Left" Margin="725,13,0,0" VerticalAlignment="Top" Height="35" Width="65" Name="StartButton" Click="StartButton_Click"/>
         <Button Content="Test" HorizontalAlignment="Left" Margin="725,217,0,0" VerticalAlignment="Top" Height="35" Width="65" Name="TestButton" Click="TestButton_Click"/>
 
         <TextBox Name="Console" HorizontalAlignment="Center" Margin="0,264,0,0" VerticalAlignment="Top" Height="160" Width="780" Background="#FF2D2D2D" IsEnabled="False"/>
+        <Slider Name="SpeedHackValueSlider" HorizontalAlignment="Left" Margin="115,60,0,0" VerticalAlignment="Top" Width="120" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" Maximum="10" Minimum="1"/>
     </Grid>
 </Window>
