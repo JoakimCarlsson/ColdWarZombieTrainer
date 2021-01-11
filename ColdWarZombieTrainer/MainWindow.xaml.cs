@@ -12,9 +12,9 @@ namespace ColdWarZombieTrainer
 
         private readonly BackgroundWorker _backgroundWorker = new BackgroundWorker();
 
-        private bool _infiniteAmmo = false;
-        private bool _infiniteMoney = false;
-
+        private bool _infiniteAmmo;
+        private bool _infiniteMoney;
+        private bool _instantKill;
         public MainWindow()
         {
             InitializeComponent();
@@ -95,7 +95,10 @@ namespace ColdWarZombieTrainer
 
                 if (_infiniteMoney)
                     _core.moneyHack.InfiniteMoney();
-            }
+
+                if (_instantKill)
+                    _core.zombieHack.OneHpZombies();
+            }   
         }
 
         private void InfiniteAmmoDisable(object sender, RoutedEventArgs e)
@@ -130,6 +133,24 @@ namespace ColdWarZombieTrainer
             {
                 _console.WriteLine("Infinite Money Disabled");
                 _infiniteMoney = false;
+            }
+        }
+
+        private void InstantKillEnable(object sender, RoutedEventArgs e)
+        {
+            if (_started)
+            {
+                _console.WriteLine("Instant Kill Enabled");
+                _instantKill = true;
+            }
+        }
+
+        private void InstantKillDisable(object sender, RoutedEventArgs e)
+        {
+            if (_started)
+            {
+                _console.WriteLine("Instant Kill Disabled");
+                _instantKill = false;
             }
         }
     }

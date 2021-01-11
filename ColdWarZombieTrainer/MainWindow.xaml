@@ -22,5 +22,6 @@
         <TextBox Name="Console" HorizontalAlignment="Center" Margin="0,264,0,0" VerticalAlignment="Top" Height="160" Width="780" Background="#FF2D2D2D" IsEnabled="False"/>
 
         <Slider Name="SpeedHackValueSlider" HorizontalAlignment="Left" Margin="115,60,0,0" VerticalAlignment="Top" Width="120" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" Maximum="10" Minimum="1"/>
+        <CheckBox Name="InstantKill" Content="Instant Kill (1hp zombies)" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Checked="InstantKillEnable" Unchecked="InstantKillDisable"/>
     </Grid>
 </Window>
