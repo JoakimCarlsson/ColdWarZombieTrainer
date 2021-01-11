@@ -16,7 +16,7 @@ namespace ColdWarZombieTrainer.Features
 
         public void InfiniteMoney()
         {
-             _memory.Write<int>(true, 13337, _baseAddress + Offsets.PlayerBase, (IntPtr)Offsets.Points);
+             _memory.Write<int>(true, 13337, _baseAddress + Offsets.PlayerBase, (IntPtr)Offsets.PlayerCompPtr.Points);
         }
     }
 }
