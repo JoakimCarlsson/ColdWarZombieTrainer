@@ -23,5 +23,6 @@
 
         <Slider Name="SpeedHackValueSlider" HorizontalAlignment="Left" Margin="115,60,0,0" VerticalAlignment="Top" Width="120" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" Maximum="10" Minimum="1"/>
         <CheckBox Name="InstantKill" Content="Instant Kill (1hp zombies)" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Checked="InstantKillEnable" Unchecked="InstantKillDisable"/>
+        <CheckBox Name="TeleportZombieCheckBox" Content="Teleport Zombies" HorizontalAlignment="Left" Margin="13,160,0,0" VerticalAlignment="Top" Checked="TeleportZombiesEnabled" Unchecked="TeleportZombiesDisable"/>
     </Grid>
 </Window>

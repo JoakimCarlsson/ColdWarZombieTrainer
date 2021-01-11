@@ -48,7 +48,7 @@ namespace ColdWarZombieTrainer
             speedHack = new SpeedHack(_baseAddress, _memory);
             infiniteAmmo = new InfiniteAmmo(_baseAddress, _memory);
             moneyHack = new SpawnMoney(_baseAddress, _memory);
-            zombieHack = new ZombieHack(zmBotListBase, _memory);
+            zombieHack = new ZombieHack(playerPedPtr,zmBotListBase, zmGlobalBase, _memory);
         }
 
         private void Attach(Process process)

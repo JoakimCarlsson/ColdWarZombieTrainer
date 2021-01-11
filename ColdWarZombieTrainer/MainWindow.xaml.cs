@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Threading;
 using System.Windows;
 
@@ -15,6 +16,7 @@ namespace ColdWarZombieTrainer
         private bool _infiniteAmmo;
         private bool _infiniteMoney;
         private bool _instantKill;
+        private bool _teleportZombies;
         public MainWindow()
         {
             InitializeComponent();
@@ -87,18 +89,30 @@ namespace ColdWarZombieTrainer
             {
                 Thread.Sleep(100);
 
-                if (!_started)
-                    continue;
+                try
+                {
+                    if (!_started)
+                        continue;
 
-                if (_infiniteAmmo)
-                    _core.infiniteAmmo.DoInfiniteAmmo();
+                    if (_infiniteAmmo)
+                        _core.infiniteAmmo.DoInfiniteAmmo();
 
-                if (_infiniteMoney)
-                    _core.moneyHack.InfiniteMoney();
+                    if (_infiniteMoney)
+                        _core.moneyHack.InfiniteMoney();
 
-                if (_instantKill)
-                    _core.zombieHack.OneHpZombies();
-            }   
+                    if (_instantKill)
+                        _core.zombieHack.OneHpZombies();
+
+
+                    if (_teleportZombies)
+                        _core.zombieHack.TpZombiesToCrossHair(150);
+                }
+                catch (Exception exception)
+                {
+                    _console.WriteLine(exception.Message);
+                }
+
+            }
         }
 
         private void InfiniteAmmoDisable(object sender, RoutedEventArgs e)
@@ -151,6 +165,24 @@ namespace ColdWarZombieTrainer
             {
                 _console.WriteLine("Instant Kill Disabled");
                 _instantKill = false;
+            }
+        }
+
+        private void TeleportZombiesEnabled(object sender, RoutedEventArgs e)
+        {
+            if (_started)
+            {
+                _console.WriteLine("Teleport Zombies Enabled");
+                _teleportZombies = true;
+            }
+        }
+
+        private void TeleportZombiesDisable(object sender, RoutedEventArgs e)
+        {
+            if (_started)
+            {
+                _console.WriteLine("Teleport Zombies Disabled");
+                _teleportZombies = false;
             }
         }
     }
