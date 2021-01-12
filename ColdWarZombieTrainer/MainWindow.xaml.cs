@@ -32,11 +32,6 @@ namespace ColdWarZombieTrainer
             }
         }
 
-        private void TestButton_Click(object sender, RoutedEventArgs e)
-        {
-            _console.WriteLine("I pressed a test button, woho.");
-        }
-
         private void GodModeEnable(object sender, RoutedEventArgs e)
         {
             if (_started)
@@ -60,7 +55,7 @@ namespace ColdWarZombieTrainer
             if (_started)
             {
                 _console.WriteLine("Speed Hack Enabled");
-                _core.speedHack.SetSpeed((float)SpeedHackValueSlider.Value);
+                _core.speedMultiplier.SetSpeed((float)SpeedHackValueSlider.Value);
             }
         }
 
@@ -69,7 +64,7 @@ namespace ColdWarZombieTrainer
             if (_started)
             {
                 _console.WriteLine("Speed Hack Disabled");
-                _core.speedHack.SetSpeed(1f);
+                _core.speedMultiplier.SetSpeed(1f);
             }
         }
 

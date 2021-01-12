@@ -6,6 +6,7 @@
 
         public static class PlayerCompPtr
         {
+            public static int ArraySizeOffset = 0xB830;
             public static int GodMode = 0xE67;
             public static int RunSpeed = 0x5C30;
             public static int Ammo = 0x13D4;
@@ -32,6 +33,14 @@
         public class ZombieGlobalClass
         {
             public static int ZombieLeftCount = 0x3C;
+        }
+
+        public class ZombieXpScaleBase
+        {
+            public int XPGun = 0x30; //XPGun_Offset
+
+            public int XPUserFake = 0x20; //Fake XPEP_InGame_Offset
+            public int XPUserReal = 0x28; //Real XPEP_RealAdd_Offset
         }
     }
 }

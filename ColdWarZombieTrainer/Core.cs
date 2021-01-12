@@ -16,10 +16,11 @@ namespace ColdWarZombieTrainer
         private WpfConsole _console;
 
         internal GodMode godMode;
-        internal SpeedHack speedHack;
+        internal SpeedMultiplier speedMultiplier;
         internal InfiniteAmmo infiniteAmmo;
         internal SpawnMoney moneyHack;
         internal ZombieHack zombieHack;
+        internal XpMultiplier xpMultiplier;
 
         internal IntPtr playerPedPtr;
         internal IntPtr zmGlobalBase;
@@ -45,10 +46,11 @@ namespace ColdWarZombieTrainer
             Attach(processes[0]);
 
             godMode = new GodMode(_baseAddress, _memory);
-            speedHack = new SpeedHack(_baseAddress, _memory);
+            speedMultiplier = new SpeedMultiplier(_baseAddress, _memory);
             infiniteAmmo = new InfiniteAmmo(_baseAddress, _memory);
             moneyHack = new SpawnMoney(_baseAddress, _memory);
             zombieHack = new ZombieHack(playerPedPtr,zmBotListBase, zmGlobalBase, _memory);
+            xpMultiplier = new XpMultiplier();
         }
 
         private void Attach(Process process)

@@ -3,12 +3,12 @@ using Memory;
 
 namespace ColdWarZombieTrainer.Features
 {
-    class SpeedHack
+    class SpeedMultiplier
     {
         private IntPtr _baseAddress;
         private NativeMemory _memory;
 
-        public SpeedHack(IntPtr baseAddress, NativeMemory memory)
+        public SpeedMultiplier(IntPtr baseAddress, NativeMemory memory)
         {
             _baseAddress = baseAddress;
             _memory = memory;
