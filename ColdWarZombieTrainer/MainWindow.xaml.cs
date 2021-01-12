@@ -216,5 +216,15 @@ namespace ColdWarZombieTrainer
                 _core.xpMultiplier.GunXpMultiplier(1f);
             }
         }
+
+        private void TimeScaleEnabled(object sender, RoutedEventArgs e)
+        {
+            _core.speedMultiplier.SetTimeScale((float)TimeScaleModiferSlider.Value);
+        }
+
+        private void TimeScaleDisabled(object sender, RoutedEventArgs e)
+        {
+            _core.speedMultiplier.SetTimeScale(1f);
+        }
     }
 }
