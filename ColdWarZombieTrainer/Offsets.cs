@@ -14,6 +14,7 @@ namespace ColdWarZombieTrainer
         public static class PlayerCompPtr
         {
             public static int ArraySizeOffset = 0xB830;
+            public static int InfraredVision = 0xE66; //On=0x10|Off=0x0
             public static int GodMode = 0xE67;
             public static int RunSpeed = 0x5C30;
             public static int Ammo = 0x13D4;

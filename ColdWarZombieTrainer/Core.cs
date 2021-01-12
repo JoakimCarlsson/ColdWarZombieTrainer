@@ -26,7 +26,7 @@ namespace ColdWarZombieTrainer
         internal SpawnMoney moneyHack;
         internal ZombieHack zombieHack;
         internal XpMultiplier xpMultiplier;
-
+        internal MiscFeatures miscFeatures;
         public Core(WpfConsole console)
         {
             _console = console;
@@ -48,6 +48,7 @@ namespace ColdWarZombieTrainer
             speedMultiplier = new SpeedMultiplier(_baseAddress, _memory);
             infiniteAmmo = new InfiniteAmmo(_baseAddress, _memory);
             moneyHack = new SpawnMoney(_baseAddress, _memory);
+            miscFeatures = new MiscFeatures(_baseAddress, _memory);
             zombieHack = new ZombieHack(_playerPedPtr,_zmBotListBase, _zmGlobalBase, _memory);
             xpMultiplier = new XpMultiplier(_baseAddress, _memory);
         }

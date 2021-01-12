@@ -226,5 +226,24 @@ namespace ColdWarZombieTrainer
         {
             _core.speedMultiplier.SetTimeScale(1f);
         }
+
+        private void InfraredEnable(object sender, RoutedEventArgs e)
+        {
+            if (_started)
+            {
+                _console.WriteLine("Infrared enabled");
+            _core.miscFeatures.ToggleInfraredVision();
+            }
+
+        }
+
+        private void InfraredDisable(object sender, RoutedEventArgs e)
+        {
+            if (_started)
+            {
+                _console.WriteLine("Infrared enabled");
+                _core.miscFeatures.ToggleInfraredVision();
+            }
+        }
     }
 }
