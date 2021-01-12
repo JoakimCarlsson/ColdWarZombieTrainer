@@ -18,5 +18,10 @@ namespace ColdWarZombieTrainer.Features
         {
             _memory.Write(false, speed, _baseAddress + Offsets.PlayerBase, (IntPtr)Offsets.PlayerCompPtr.RunSpeed);
         }
+
+        public void SetTimeScale(float speed)
+        {
+            
+        }
     }
 }

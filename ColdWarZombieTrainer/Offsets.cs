@@ -5,7 +5,7 @@ namespace ColdWarZombieTrainer
     class Offsets
     {
         public static int PlayerBase = 0xFD6B7C8;
-        public static IntPtr ZMXPScaleBase = (IntPtr)265893824; // 0xFD937C0
+        public static int ZMXPScaleBase = 0xFD937C0;
         //public static IntPtr TimeScaleBase = (IntPtr)249797624 + 124;
         //public static IntPtr CMDBufferBase = (IntPtr)292361544 + 328728;
         //public static IntPtr XPScaleZM = (IntPtr)265479520;

@@ -195,7 +195,7 @@ namespace ColdWarZombieTrainer
             if (_started)
             {
                 _console.WriteLine("XP Multiplier disabled");
-                _core.xpMultiplier.GunXpMultiplier(2f);
+                _core.xpMultiplier.PlayerXpMultiplier(1f);
             }
         }
 
