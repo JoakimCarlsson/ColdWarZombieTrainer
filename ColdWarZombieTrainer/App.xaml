@@ -4,10 +4,10 @@
              xmlns:local="clr-namespace:ColdWarZombieTrainer"
              StartupUri="MainWindow.xaml">
         <Application.Resources>
-            <ResourceDictionary>
+            <!--<ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
                     <ResourceDictionary Source="/Themes/DarkTheme.xaml"/>
                 </ResourceDictionary.MergedDictionaries>
-            </ResourceDictionary>
+            </ResourceDictionary>-->
         </Application.Resources>
 </Application>

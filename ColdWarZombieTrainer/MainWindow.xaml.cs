@@ -17,6 +17,7 @@ namespace ColdWarZombieTrainer
         private bool _infiniteMoney;
         private bool _instantKill;
         private bool _teleportZombies;
+        private bool _rapidFire;
         public MainWindow()
         {
             InitializeComponent();
@@ -101,6 +102,9 @@ namespace ColdWarZombieTrainer
 
                     if (_teleportZombies)
                         _core.zombieHack.TpZombiesToCrossHair(150);
+
+                    if (_rapidFire)
+                        _core.miscFeatures.DoRapidFire();
                 }
                 catch (Exception exception)
                 {
@@ -219,12 +223,20 @@ namespace ColdWarZombieTrainer
 
         private void TimeScaleEnabled(object sender, RoutedEventArgs e)
         {
-            _core.speedMultiplier.SetTimeScale((float)TimeScaleModiferSlider.Value);
+            if (_started)
+            {
+                _console.WriteLine("Time Scaled Speed Enabled");
+                _core.speedMultiplier.SetTimeScale((float)TimeScaleModiferSlider.Value);
+            }
         }
 
         private void TimeScaleDisabled(object sender, RoutedEventArgs e)
         {
-            _core.speedMultiplier.SetTimeScale(1f);
+            if (_started)
+            {
+                _console.WriteLine("Time Scaled Speed Disabled");
+                _core.speedMultiplier.SetTimeScale(1f);
+            }
         }
 
         private void InfraredEnable(object sender, RoutedEventArgs e)
@@ -243,6 +255,42 @@ namespace ColdWarZombieTrainer
             {
                 _console.WriteLine("Infrared enabled");
                 _core.miscFeatures.ToggleInfraredVision();
+            }
+        }
+
+        private void RapidFireEnabled(object sender, RoutedEventArgs e)
+        {
+            if (_started)
+            {
+                _console.WriteLine("Rapid Fire enabled");
+                _rapidFire = true;
+            }
+        }
+
+        private void RapidFireDisable(object sender, RoutedEventArgs e)
+        {
+            if (_started)
+            {
+                _console.WriteLine("Rapid Fire Disabled");
+                _rapidFire = false;
+            }
+        }
+
+        private void HeadShotOnlyEnabled(object sender, RoutedEventArgs e)
+        {
+            if (_started)
+            {
+                _console.WriteLine("Head Shot Only Enabled");
+                _core.miscFeatures.ToggleCritOnly();
+            }
+        }
+
+        private void HeadShotOnlyDisable(object sender, RoutedEventArgs e)
+        {
+            if (_started)
+            {
+                _console.WriteLine("Head Shot Only Disabled");
+                _core.miscFeatures.ToggleCritOnly();
             }
         }
     }

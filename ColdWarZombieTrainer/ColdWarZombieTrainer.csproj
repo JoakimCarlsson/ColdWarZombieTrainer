@@ -5,6 +5,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <Platforms>AnyCPU;x64</Platforms>
+    <Authors>FeetLovers</Authors>
+    <Company>FeetFetishCo</Company>
+    <Product>FeetPicatureScrapper</Product>
+    <PackageId>ColdWarZombieTrainer</PackageId>
   </PropertyGroup>
 
   <ItemGroup>

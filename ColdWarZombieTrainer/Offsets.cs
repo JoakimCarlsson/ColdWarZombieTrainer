@@ -19,6 +19,9 @@ namespace ColdWarZombieTrainer
             public static int RunSpeed = 0x5C30;
             public static int Ammo = 0x13D4;
             public static int Points = 0x5CE4;
+
+            public static int RapidFire1 = 0xE6C;
+            public static int RapidFire2 = 0xE80;
         }
 
 
