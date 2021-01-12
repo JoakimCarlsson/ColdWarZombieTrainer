@@ -1,8 +1,15 @@
-﻿namespace ColdWarZombieTrainer
+﻿using System;
+
+namespace ColdWarZombieTrainer
 {
     class Offsets
     {
         public static int PlayerBase = 0xFD6B7C8;
+        public static IntPtr ZMXPScaleBase = (IntPtr)265893824; // 0xFD937C0
+        //public static IntPtr TimeScaleBase = (IntPtr)249797624 + 124;
+        //public static IntPtr CMDBufferBase = (IntPtr)292361544 + 328728;
+        //public static IntPtr XPScaleZM = (IntPtr)265479520;
+        //public static IntPtr GunXPScaleZM = (IntPtr)265479536;
 
         public static class PlayerCompPtr
         {
@@ -37,10 +44,9 @@
 
         public class ZombieXpScaleBase
         {
-            public int XPGun = 0x30; //XPGun_Offset
-
-            public int XPUserFake = 0x20; //Fake XPEP_InGame_Offset
-            public int XPUserReal = 0x28; //Real XPEP_RealAdd_Offset
+            public static int XPGun = 0x30; //XPGun_Offset
+            public static int XPUserFake = 0x20; //Fake XPEP_InGame_Offset
+            public static int XPUserReal = 0x28; //Real XPEP_RealAdd_Offset
         }
     }
 }

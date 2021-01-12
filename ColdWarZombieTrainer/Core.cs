@@ -15,18 +15,17 @@ namespace ColdWarZombieTrainer
         private NativeMemory _memory;
         private WpfConsole _console;
 
+        private IntPtr _playerPedPtr;
+        private IntPtr _zmGlobalBase;
+        private IntPtr _zmBotBase;
+        private IntPtr _zmBotListBase;
+
         internal GodMode godMode;
         internal SpeedMultiplier speedMultiplier;
         internal InfiniteAmmo infiniteAmmo;
         internal SpawnMoney moneyHack;
         internal ZombieHack zombieHack;
         internal XpMultiplier xpMultiplier;
-
-        internal IntPtr playerPedPtr;
-        internal IntPtr zmGlobalBase;
-        internal IntPtr zmBotBase;
-        internal IntPtr zmBotListBase;
-
 
         public Core(WpfConsole console)
         {
@@ -49,8 +48,8 @@ namespace ColdWarZombieTrainer
             speedMultiplier = new SpeedMultiplier(_baseAddress, _memory);
             infiniteAmmo = new InfiniteAmmo(_baseAddress, _memory);
             moneyHack = new SpawnMoney(_baseAddress, _memory);
-            zombieHack = new ZombieHack(playerPedPtr,zmBotListBase, zmGlobalBase, _memory);
-            xpMultiplier = new XpMultiplier();
+            zombieHack = new ZombieHack(_playerPedPtr,_zmBotListBase, _zmGlobalBase, _memory);
+            xpMultiplier = new XpMultiplier(_baseAddress, _memory);
         }
 
         private void Attach(Process process)
@@ -58,16 +57,16 @@ namespace ColdWarZombieTrainer
             _memory = new ExternalProcessMemory(process);
             _baseAddress = _memory.GetModule("BlackOpsColdWar.exe").BaseAddress;
 
-            playerPedPtr = _memory.Read<IntPtr>(_baseAddress + Offsets.PlayerBase + 0x8);
-            zmGlobalBase = _memory.Read<IntPtr>(_baseAddress + Offsets.PlayerBase + 0x60);
-            zmBotBase = _memory.Read<IntPtr>(_baseAddress + Offsets.PlayerBase + 0x68);
-            zmBotListBase = _memory.Read<IntPtr>(zmBotBase + 0x8);
+            _playerPedPtr = _memory.Read<IntPtr>(_baseAddress + Offsets.PlayerBase + 0x8);
+            _zmGlobalBase = _memory.Read<IntPtr>(_baseAddress + Offsets.PlayerBase + 0x60);
+            _zmBotBase = _memory.Read<IntPtr>(_baseAddress + Offsets.PlayerBase + 0x68);
+            _zmBotListBase = _memory.Read<IntPtr>(_zmBotBase + 0x8);
 
 
-            _console.WriteLine($"playerPedPtr: {playerPedPtr}");
-            _console.WriteLine($"zmGlobalBase: {zmGlobalBase}");
-            _console.WriteLine($"zmBotBase: {zmBotBase}");
-            _console.WriteLine($"zmBotListBase: {zmBotListBase}");
+            _console.WriteLine($"playerPedPtr: {_playerPedPtr}");
+            _console.WriteLine($"zmGlobalBase: {_zmGlobalBase}");
+            _console.WriteLine($"zmBotBase: {_zmBotBase}");
+            _console.WriteLine($"zmBotListBase: {_zmBotListBase}");
 
             _console.WriteLine($"Attached: BaseAddress: {_baseAddress}");
         }

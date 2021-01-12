@@ -111,10 +111,10 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <CheckBox Grid.Column="0" Content="XP Modifier" Name="XpModiferCheckBox" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="373,0,0,0"/>
+            <CheckBox Grid.Column="0" Content="XP Modifier" Name="XpModiferCheckBox" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="373,0,0,0" Checked="XpModiferEnabled" Unchecked="XpModiferDisabled"/>
             <Slider Grid.Row="1" Grid.Column="0" Name="XpModiferSlider"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="500" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" Maximum="5000" Minimum="1" Height="22" Orientation="Horizontal" TickPlacement="None" Grid.ColumnSpan="2" Margin="164,0,0,0"/>
 
-            <CheckBox Grid.Row="2" Grid.Column="0" Content="Weapon XP Modifier" Name="GunXpModiferCheckBox" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="349,0,0,0"/>
+            <CheckBox Grid.Row="2" Grid.Column="0" Content="Weapon XP Modifier" Name="GunXpModiferCheckBox" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="349,0,0,0" Checked="GunXpModiferEnabled" Unchecked="GunXpModiferDisabled"/>
             <Slider Grid.Row="3" Grid.Column="0" Name="GunModiferSlider" HorizontalAlignment="Left" VerticalAlignment="Center" Width="500" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" Maximum="5000" Minimum="1" Height="22" Orientation="Horizontal" TickPlacement="None" Grid.ColumnSpan="2" Margin="164,0,0,0"/>
 
             <CheckBox Grid.Row="4" Grid.Column="0" Content="TimeScale Modifier (Not Implemented)" Name="TimeScaleModiferCheckBox" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="301,0,0,0"/>

@@ -180,5 +180,41 @@ namespace ColdWarZombieTrainer
                 _teleportZombies = false;
             }
         }
+
+        private void XpModiferEnabled(object sender, RoutedEventArgs e)
+        {
+            if (_started)
+            {
+                _console.WriteLine("XP Multiplier enabled");
+                _core.xpMultiplier.PlayerXpMultiplier((float) XpModiferSlider.Value);
+            }
+        }
+
+        private void XpModiferDisabled(object sender, RoutedEventArgs e)
+        {
+            if (_started)
+            {
+                _console.WriteLine("XP Multiplier disabled");
+                _core.xpMultiplier.GunXpMultiplier(2f);
+            }
+        }
+
+        private void GunXpModiferEnabled(object sender, RoutedEventArgs e)
+        {
+            if (_started)
+            {
+                _console.WriteLine("XP Multiplier Started");
+                _core.xpMultiplier.GunXpMultiplier((float)XpModiferSlider.Value);
+            }
+        }
+
+        private void GunXpModiferDisabled(object sender, RoutedEventArgs e)
+        {
+            if (_started)
+            {
+                _console.WriteLine("XP Multiplier disabled");
+                _core.xpMultiplier.GunXpMultiplier(1f);
+            }
+        }
     }
 }
