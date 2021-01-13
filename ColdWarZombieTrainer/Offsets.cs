@@ -4,9 +4,9 @@ namespace ColdWarZombieTrainer
 {
     class Offsets
     {
-        public static int PlayerBase = 0xFD6B7C8;
-        public static int ZMXPScaleBase = 0xFD937C0;
-        public static int TimeScaleBase = 0xEE39BF8 + 0x7C;
+        public static int PlayerBase = 0xFD6C7C8;
+        public static int ZMXPScaleBase = 0xFD947C0;
+        public static int TimeScaleBase = 0xEE3ABF8 + 0x7C;
         //public static IntPtr CMDBufferBase = (IntPtr)292361544 + 328728;
         //public static IntPtr XPScaleZM = (IntPtr)265479520;
         //public static IntPtr GunXPScaleZM = (IntPtr)265479536;
@@ -19,9 +19,11 @@ namespace ColdWarZombieTrainer
             public static int RunSpeed = 0x5C30;
             public static int Ammo = 0x13D4;
             public static int Points = 0x5CE4;
-
             public static int RapidFire1 = 0xE6C;
             public static int RapidFire2 = 0xE80;
+            public static int Name = 0x5BDA;
+            public static int CurrentUsedWeaponID = 0x28;
+            public static int SetWeaponID = 0xB0;
         }
 
 

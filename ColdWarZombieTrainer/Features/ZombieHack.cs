@@ -27,6 +27,7 @@ namespace ColdWarZombieTrainer.Features
             for (int i = 0; i < 120; i++)
             {
                 _memory.Write(false, 1, (_zmBotListBase + (Offsets.ZombieBotListBase.BotArraySizeOffset * i) + Offsets.ZombieBotListBase.BotHealth));
+
                 _memory.Write(false, 1, (_zmBotListBase + (Offsets.ZombieBotListBase.BotArraySizeOffset * i) + Offsets.ZombieBotListBase.BotMaxHealth));
             }
         }
