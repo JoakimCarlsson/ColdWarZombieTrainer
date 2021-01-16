@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Numerics;
 using System.Threading;
 using System.Windows;
 
@@ -18,6 +19,8 @@ namespace ColdWarZombieTrainer
         private bool _instantKill;
         private bool _teleportZombies;
         private bool _rapidFire;
+        private bool _teleportZombiesLocation;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -99,12 +102,14 @@ namespace ColdWarZombieTrainer
                     if (_instantKill)
                         _core.zombieHack.OneHpZombies();
 
-
                     if (_teleportZombies)
-                        _core.zombieHack.TpZombiesToCrossHair(150);
+                        _core.zombieHack.TeleportZombies(true, 150);
 
                     if (_rapidFire)
                         _core.miscFeatures.DoRapidFire();
+
+                    if (_teleportZombiesLocation)
+                        _core.zombieHack.TeleportZombies(false);
                 }
                 catch (Exception exception)
                 {
@@ -171,7 +176,10 @@ namespace ColdWarZombieTrainer
         {
             if (_started)
             {
-                _console.WriteLine("Teleport Zombies Enabled");
+                if (TeleportZombiePositionCheckBox.IsChecked.GetValueOrDefault())
+                    TeleportZombiePositionCheckBox.IsChecked = false;
+
+                _console.WriteLine("Teleport Zombies Too Crosshair Enabled");
                 _teleportZombies = true;
             }
         }
@@ -292,6 +300,40 @@ namespace ColdWarZombieTrainer
                 _console.WriteLine("Head Shot Only Disabled");
                 _core.miscFeatures.ToggleCritOnly();
             }
+        }
+
+        private void SetPosition(object sender, RoutedEventArgs e)
+        {
+            if (_started)
+            {
+                Vector3 position = _core.zombieHack.SetPosition();
+                PositionLabel.Content = $"Set Position: [{position.X},{position.Y},{position.Z}]";
+            }
+        }
+
+        private void TeleportZombiesPosEnabled(object sender, RoutedEventArgs e)
+        {
+            if (_started)
+            {
+                _console.WriteLine("Teleporting Zombies To Location Enabled");
+
+                if (TeleportZombieCheckBox.IsChecked.GetValueOrDefault())
+                    TeleportZombieCheckBox.IsChecked = false;
+
+                _teleportZombiesLocation = true;
+            }
+        }
+
+        private void TeleportZombiesPosDisabled(object sender, RoutedEventArgs e)
+        {
+            if (_started)
+            {
+                _console.WriteLine("Teleporting Zombies To Location Disable");
+                _teleportZombiesLocation = false;
+
+            }
+
+
         }
     }
 }

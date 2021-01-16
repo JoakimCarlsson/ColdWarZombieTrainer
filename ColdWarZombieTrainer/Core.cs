@@ -10,6 +10,7 @@ namespace ColdWarZombieTrainer
     {
         private const string GameTitle = "Call of Duty®: Black Ops Cold War";
         private const string ProcessName = "BlackOpsColdWar";
+
         private IntPtr _hWnd;
         private IntPtr _baseAddress;
         private NativeMemory _memory;

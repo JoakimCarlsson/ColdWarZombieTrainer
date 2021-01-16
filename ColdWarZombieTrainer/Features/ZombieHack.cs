@@ -14,6 +14,8 @@ namespace ColdWarZombieTrainer.Features
         private IntPtr _zmGlobalBase;
         private NativeMemory _memory;
 
+        private Vector3 _playerPosition;
+
         public ZombieHack(IntPtr playerPedPtr, IntPtr zmBotListBase, IntPtr zmGlobalBase, NativeMemory memory)
         {
             _playerPedPtr = playerPedPtr;
@@ -27,14 +29,14 @@ namespace ColdWarZombieTrainer.Features
             for (int i = 0; i < 120; i++)
             {
                 _memory.Write(false, 1, (_zmBotListBase + (Offsets.ZombieBotListBase.BotArraySizeOffset * i) + Offsets.ZombieBotListBase.BotHealth));
-
                 _memory.Write(false, 1, (_zmBotListBase + (Offsets.ZombieBotListBase.BotArraySizeOffset * i) + Offsets.ZombieBotListBase.BotMaxHealth));
             }
         }
 
-        public void TpZombiesToCrossHair(int distance)
+        public void TeleportZombies(bool TeleportCrosshair, int distance = 150)
         {
-            Vector3 newEnemyPosition = NewEnemyPosition(distance);
+            Vector3 newEnemyPosition = TeleportCrosshair ? NewEnemyPosition(distance) : _playerPosition;
+
             byte[] enemyPosBuffer = new byte[12];
 
             Buffer.BlockCopy(BitConverter.GetBytes(newEnemyPosition.X), 0, enemyPosBuffer, 0, 4);
@@ -73,6 +75,12 @@ namespace ColdWarZombieTrainer.Features
             playerPosition.Z = BitConverter.ToSingle(playerCoords, 8);
 
             return new Vector3((float)Math.Round(playerPosition.X, 4), (float)Math.Round(playerPosition.Y, 4), (float)Math.Round(playerPosition.Z, 4));
+        }
+
+        public Vector3 SetPosition()
+        {
+            _playerPosition = GetPlayerPosition();
+            return _playerPosition;
         }
     }
 }
