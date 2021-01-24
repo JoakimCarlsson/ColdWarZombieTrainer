@@ -23,9 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Memory">
-      <HintPath>..\..\CSGO-Simple-External-Cheat\SimpleExternal\Memory\bin\Debug\Memory.dll</HintPath>
-    </Reference>
+    <PackageReference Include="BlueRain" Version="2.0.0" />
   </ItemGroup>
 
 </Project>

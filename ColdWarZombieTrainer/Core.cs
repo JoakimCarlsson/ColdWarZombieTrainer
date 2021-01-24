@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading;
+using BlueRain;
 using ColdWarZombieTrainer.Features;
-using Memory;
 
 namespace ColdWarZombieTrainer
 {

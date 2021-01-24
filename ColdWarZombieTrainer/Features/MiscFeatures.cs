@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using BlueRain;
 using ColdWarZombieTrainer.Utils;
-using Memory;
 
 namespace ColdWarZombieTrainer.Features
 {

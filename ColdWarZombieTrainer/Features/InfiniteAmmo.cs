@@ -1,5 +1,5 @@
 ﻿using System;
-using Memory;
+using BlueRain;
 
 namespace ColdWarZombieTrainer.Features
 {
