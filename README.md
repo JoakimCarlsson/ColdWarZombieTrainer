@@ -5,13 +5,16 @@ Cold War Zombie Trainer
 * God Mode
 * Speed Hack
 * Infinite Ammo
+* Infinite Money
 * Insta kill ( 1 hp zombies )
 * Teleport Zomies too crosshair.
+* Teleport Zombies too set location.
+* Always Crit
 * Rapid Fire
 * Thermal Vison 
 * XP Multiplier
 * Gun XP Multiplier 
 * TimeScale Multiplier 
 
-### Credits:
-* Theme: **AngryCarrot789** https://github.com/AngryCarrot789/WPFDarkTheme
+### TODO
+Auto Switch Weapon
