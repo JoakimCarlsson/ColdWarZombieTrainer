@@ -8,6 +8,14 @@ namespace ColdWarZombieTrainer
 {
     class Core
     {
+        public GodMode GodMode { get; private set; }
+        public SpeedMultiplier SpeedMultiplier { get; private set; }
+        public InfiniteAmmo InfiniteAmmo { get; private set; }
+        public SpawnMoney MoneyHack { get; private set; }
+        public ZombieHack ZombieHack { get; private set; }
+        public XpMultiplier XpMultiplier { get; private set; }
+        public MiscFeatures MiscFeatures { get; private set; }
+
         private const string GameTitle = "Call of Duty®: Black Ops Cold War";
         private const string ProcessName = "BlackOpsColdWar";
 
@@ -15,19 +23,11 @@ namespace ColdWarZombieTrainer
         private IntPtr _baseAddress;
         private NativeMemory _memory;
         private WpfConsole _console;
-
         private IntPtr _playerPedPtr;
         private IntPtr _zmGlobalBase;
         private IntPtr _zmBotBase;
         private IntPtr _zmBotListBase;
 
-        internal GodMode godMode;
-        internal SpeedMultiplier speedMultiplier;
-        internal InfiniteAmmo infiniteAmmo;
-        internal SpawnMoney moneyHack;
-        internal ZombieHack zombieHack;
-        internal XpMultiplier xpMultiplier;
-        internal MiscFeatures miscFeatures;
         public Core(WpfConsole console)
         {
             _console = console;
@@ -45,13 +45,13 @@ namespace ColdWarZombieTrainer
             Process[] processes = Process.GetProcessesByName(ProcessName);
             Attach(processes[0]);
 
-            godMode = new GodMode(_baseAddress, _memory);
-            speedMultiplier = new SpeedMultiplier(_baseAddress, _memory);
-            infiniteAmmo = new InfiniteAmmo(_baseAddress, _memory);
-            moneyHack = new SpawnMoney(_baseAddress, _memory);
-            miscFeatures = new MiscFeatures(_baseAddress, _memory);
-            zombieHack = new ZombieHack(_playerPedPtr,_zmBotListBase, _zmGlobalBase, _memory);
-            xpMultiplier = new XpMultiplier(_baseAddress, _memory);
+            GodMode = new GodMode(_baseAddress, _memory);
+            SpeedMultiplier = new SpeedMultiplier(_baseAddress, _memory);
+            InfiniteAmmo = new InfiniteAmmo(_baseAddress, _memory);
+            MoneyHack = new SpawnMoney(_baseAddress, _memory);
+            MiscFeatures = new MiscFeatures(_baseAddress, _memory);
+            ZombieHack = new ZombieHack(_playerPedPtr,_zmBotListBase, _zmGlobalBase, _memory);
+            XpMultiplier = new XpMultiplier(_baseAddress, _memory);
         }
 
         private void Attach(Process process)

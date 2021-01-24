@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Numerics;
 using System.Threading;
 using System.Windows;
+using ColdWarZombieTrainer.Enums;
 
 namespace ColdWarZombieTrainer
 {
@@ -20,6 +23,8 @@ namespace ColdWarZombieTrainer
         private bool _teleportZombies;
         private bool _rapidFire;
         private bool _teleportZombiesLocation;
+        private bool _critOnly;
+
 
         public MainWindow()
         {
@@ -33,6 +38,8 @@ namespace ColdWarZombieTrainer
                 _started = !_started;
                 _core = new Core(_console);
                 _core.Start();
+
+                WeaponIdComboBox.ItemsSource = _core.MiscFeatures.weapons;
             }
         }
 
@@ -41,7 +48,7 @@ namespace ColdWarZombieTrainer
             if (_started)
             {
                 _console.WriteLine("God Mode Enabled");
-                _core.godMode.EnableGodMode();
+                _core.GodMode.EnableGodMode();
             }
         }
 
@@ -50,7 +57,7 @@ namespace ColdWarZombieTrainer
             if (_started)
             {
                 _console.WriteLine("God Mode Disabled");
-                _core.godMode.DisableGodMode();
+                _core.GodMode.DisableGodMode();
             }
         }
 
@@ -59,7 +66,7 @@ namespace ColdWarZombieTrainer
             if (_started)
             {
                 _console.WriteLine("Speed Hack Enabled");
-                _core.speedMultiplier.SetSpeed((float)SpeedHackValueSlider.Value);
+                _core.SpeedMultiplier.SetSpeed((float)SpeedHackValueSlider.Value);
             }
         }
 
@@ -68,7 +75,7 @@ namespace ColdWarZombieTrainer
             if (_started)
             {
                 _console.WriteLine("Speed Hack Disabled");
-                _core.speedMultiplier.SetSpeed(1f);
+                _core.SpeedMultiplier.SetSpeed(1f);
             }
         }
 
@@ -94,22 +101,25 @@ namespace ColdWarZombieTrainer
                         continue;
 
                     if (_infiniteAmmo)
-                        _core.infiniteAmmo.DoInfiniteAmmo();
+                        _core.InfiniteAmmo.DoInfiniteAmmo();
 
                     if (_infiniteMoney)
-                        _core.moneyHack.InfiniteMoney();
+                        _core.MoneyHack.InfiniteMoney();
 
                     if (_instantKill)
-                        _core.zombieHack.OneHpZombies();
+                        _core.ZombieHack.OneHpZombies();
 
                     if (_teleportZombies)
-                        _core.zombieHack.TeleportZombies(true, 150);
+                        _core.ZombieHack.TeleportZombies(true, 150);
 
                     if (_rapidFire)
-                        _core.miscFeatures.DoRapidFire();
+                        _core.MiscFeatures.DoRapidFire();
 
                     if (_teleportZombiesLocation)
-                        _core.zombieHack.TeleportZombies(false);
+                        _core.ZombieHack.TeleportZombies(false);
+
+                    if (_critOnly)
+                        _core.MiscFeatures.CritOnly();
                 }
                 catch (Exception exception)
                 {
@@ -198,7 +208,7 @@ namespace ColdWarZombieTrainer
             if (_started)
             {
                 _console.WriteLine("XP Multiplier enabled");
-                _core.xpMultiplier.PlayerXpMultiplier((float) XpModiferSlider.Value);
+                _core.XpMultiplier.PlayerXpMultiplier((float) XpModiferSlider.Value);
             }
         }
 
@@ -207,7 +217,7 @@ namespace ColdWarZombieTrainer
             if (_started)
             {
                 _console.WriteLine("XP Multiplier disabled");
-                _core.xpMultiplier.PlayerXpMultiplier(1f);
+                _core.XpMultiplier.PlayerXpMultiplier(1f);
             }
         }
 
@@ -216,7 +226,7 @@ namespace ColdWarZombieTrainer
             if (_started)
             {
                 _console.WriteLine("XP Multiplier Started");
-                _core.xpMultiplier.GunXpMultiplier((float)XpModiferSlider.Value);
+                _core.XpMultiplier.GunXpMultiplier((float)XpModiferSlider.Value);
             }
         }
 
@@ -225,7 +235,7 @@ namespace ColdWarZombieTrainer
             if (_started)
             {
                 _console.WriteLine("XP Multiplier disabled");
-                _core.xpMultiplier.GunXpMultiplier(1f);
+                _core.XpMultiplier.GunXpMultiplier(1f);
             }
         }
 
@@ -234,7 +244,7 @@ namespace ColdWarZombieTrainer
             if (_started)
             {
                 _console.WriteLine("Time Scaled Speed Enabled");
-                _core.speedMultiplier.SetTimeScale((float)TimeScaleModiferSlider.Value);
+                _core.SpeedMultiplier.SetTimeScale((float)TimeScaleModiferSlider.Value);
             }
         }
 
@@ -243,7 +253,7 @@ namespace ColdWarZombieTrainer
             if (_started)
             {
                 _console.WriteLine("Time Scaled Speed Disabled");
-                _core.speedMultiplier.SetTimeScale(1f);
+                _core.SpeedMultiplier.SetTimeScale(1f);
             }
         }
 
@@ -252,7 +262,7 @@ namespace ColdWarZombieTrainer
             if (_started)
             {
                 _console.WriteLine("Infrared enabled");
-            _core.miscFeatures.ToggleInfraredVision();
+            _core.MiscFeatures.ToggleInfraredVision();
             }
 
         }
@@ -262,7 +272,7 @@ namespace ColdWarZombieTrainer
             if (_started)
             {
                 _console.WriteLine("Infrared enabled");
-                _core.miscFeatures.ToggleInfraredVision();
+                _core.MiscFeatures.ToggleInfraredVision();
             }
         }
 
@@ -289,7 +299,8 @@ namespace ColdWarZombieTrainer
             if (_started)
             {
                 _console.WriteLine("Head Shot Only Enabled");
-                _core.miscFeatures.ToggleCritOnly();
+                _critOnly = true;
+                //_core.MiscFeatures.CritOnly();
             }
         }
 
@@ -298,7 +309,8 @@ namespace ColdWarZombieTrainer
             if (_started)
             {
                 _console.WriteLine("Head Shot Only Disabled");
-                _core.miscFeatures.ToggleCritOnly();
+                _critOnly = false;
+                //_core.MiscFeatures.CritOnly();
             }
         }
 
@@ -306,7 +318,7 @@ namespace ColdWarZombieTrainer
         {
             if (_started)
             {
-                Vector3 position = _core.zombieHack.SetPosition();
+                Vector3 position = _core.ZombieHack.SetPosition();
                 PositionLabel.Content = $"Set Position: [{position.X},{position.Y},{position.Z}]";
             }
         }
@@ -332,8 +344,17 @@ namespace ColdWarZombieTrainer
                 _teleportZombiesLocation = false;
 
             }
+        }
 
-
+        private void ChangeWeaponButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (_started)
+            {
+                _console.WriteLine("Weapon Changed");
+                KeyValuePair<string, int> weapon = (KeyValuePair<string, int>) WeaponIdComboBox.SelectedItem;
+                _core.MiscFeatures.SetWeapon(weapon.Value);
+                MyWeaponLabel.Content = $"Weapon: {WeaponIdComboBox.Text}";
+            }
         }
     }
 }
