@@ -15,6 +15,7 @@ Cold War Zombie Trainer
 * XP Multiplier
 * Gun XP Multiplier 
 * TimeScale Multiplier 
+* Weapon Switch. 
 
 ### TODO
 Auto Switch Weapon
