@@ -7,9 +7,6 @@ namespace ColdWarZombieTrainer
         public static int PlayerBase = 0xFC297B8;
         public static int ZMXPScaleBase = 0xFC517B0;
         public static int TimeScaleBase = 0xECF9C74/* + 0x7C*/;
-        //public static IntPtr CMDBufferBase = (IntPtr)292361544 + 328728;
-        //public static IntPtr XPScaleZM = (IntPtr)265479520;
-        //public static IntPtr GunXPScaleZM = (IntPtr)265479536;
 
         public static class PlayerCompPtr
         {
@@ -44,17 +41,6 @@ namespace ColdWarZombieTrainer
             public static int BotArraySizeOffset = 0x5F8;
             public static int Coords = 0x2D4;
         }
-
-        //await CMDBuffer_Exec("kick playerxyz");
-        //await CMDBuffer_Exec("clientkick 2");
-        //public async Task CMDBuffer_Exec(string Command)
-        //{
-        //    await WriteString(0x10DD4A80, Command + "\0"); // Write Command
-        //    await Write<bool>(0x10DD4A80 - 0x1B, true); // Execute
-        //    await Task.Delay(15); // Wait
-        //    await Write<bool>(0x10DD4A80 - 0x1B, false); // Stop spam if Input-Command is wrong
-        //    await WriteString(0x10DD4A80, "\0"); // clear Input-Command
-        //}
 
         public class ZombieGlobalClass
         {

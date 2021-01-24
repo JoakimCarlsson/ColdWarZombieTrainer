@@ -118,8 +118,8 @@ namespace ColdWarZombieTrainer
                     if (_teleportZombiesLocation)
                         _core.ZombieHack.TeleportZombies(false);
 
-                    if (_critOnly)
-                        _core.MiscFeatures.CritOnly();
+                    //if (_critOnly)
+                    //    _core.MiscFeatures.CritOnly();
                 }
                 catch (Exception exception)
                 {
@@ -299,8 +299,8 @@ namespace ColdWarZombieTrainer
             if (_started)
             {
                 _console.WriteLine("Head Shot Only Enabled");
-                _critOnly = true;
-                //_core.MiscFeatures.CritOnly();
+                //_critOnly = true;
+                _core.MiscFeatures.CritOnly();
             }
         }
 
@@ -309,8 +309,8 @@ namespace ColdWarZombieTrainer
             if (_started)
             {
                 _console.WriteLine("Head Shot Only Disabled");
-                _critOnly = false;
-                //_core.MiscFeatures.CritOnly();
+                //_critOnly = false;
+                _core.MiscFeatures.CritOnly();
             }
         }
 

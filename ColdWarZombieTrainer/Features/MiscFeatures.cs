@@ -97,21 +97,20 @@ namespace ColdWarZombieTrainer.Features
 
         public void CritOnly()
         {
-            //if (!_critOnly)
-            //{
-            //    _critOnly = !_critOnly;
+            if (!_critOnly)
+            {
+                _critOnly = !_critOnly;
                 _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr)Offsets.PlayerCompPtr.Crit);
-            //}
-            //else
-            //{
-            //    _critOnly = !_critOnly;
-
-            //}
+            }
+            else
+            {
+                _critOnly = !_critOnly;
+            }
         }
 
         public void SetWeapon(int id)
         {
-            _memory.Write<int>(false, id, _baseAddress + Offsets.PlayerBase, (IntPtr)Offsets.PlayerCompPtr.SetWeaponID + 0x40);
+            _memory.Write<int>(false, id, _baseAddress + Offsets.PlayerBase, (IntPtr)Offsets.PlayerCompPtr.SetWeaponID /*+ 0x40*/);
         }
     }
 }
