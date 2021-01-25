@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading;
+using System.Windows.Media;
 using BlueRain;
 using ColdWarZombieTrainer.Features;
 
@@ -33,28 +34,32 @@ namespace ColdWarZombieTrainer
             _console = console;
         }
 
-        public void Start()
+        public bool Start()
         {
-            _console.WriteLine($"> Waiting for {GameTitle} to start up...");
-
-            while ((_hWnd = WinAPI.FindWindowByCaption(_hWnd, GameTitle)) == IntPtr.Zero)
-            {
-                Thread.Sleep(250);
-            }
+            if ((_hWnd = WinAPI.FindWindowByCaption(_hWnd, GameTitle)) == IntPtr.Zero)
+                return false;
 
             Process[] processes = Process.GetProcessesByName(ProcessName);
-            Attach(processes[0]);
+            bool temp = Attach(processes[0]);
 
-            GodMode = new GodMode(_baseAddress, _memory);
-            SpeedMultiplier = new SpeedMultiplier(_baseAddress, _memory);
-            InfiniteAmmo = new InfiniteAmmo(_baseAddress, _memory);
-            MoneyHack = new SpawnMoney(_baseAddress, _memory);
-            MiscFeatures = new MiscFeatures(_baseAddress, _memory);
-            ZombieHack = new ZombieHack(_playerPedPtr,_zmBotListBase, _zmGlobalBase, _memory);
-            XpMultiplier = new XpMultiplier(_baseAddress, _memory);
+            if (temp)
+            {
+                GodMode = new GodMode(_baseAddress, _memory);
+                SpeedMultiplier = new SpeedMultiplier(_baseAddress, _memory);
+                InfiniteAmmo = new InfiniteAmmo(_baseAddress, _memory);
+                MoneyHack = new SpawnMoney(_baseAddress, _memory);
+                MiscFeatures = new MiscFeatures(_baseAddress, _memory);
+                ZombieHack = new ZombieHack(_playerPedPtr, _zmBotListBase, _zmGlobalBase, _memory);
+                XpMultiplier = new XpMultiplier(_baseAddress, _memory);
+
+                return true;
+            }
+
+            return false;
+
         }
 
-        private void Attach(Process process)
+        private bool Attach(Process process)
         {
             _memory = new ExternalProcessMemory(process);
             _baseAddress = _memory.GetModule("BlackOpsColdWar.exe").BaseAddress;
@@ -64,13 +69,19 @@ namespace ColdWarZombieTrainer
             _zmBotBase = _memory.Read<IntPtr>(_baseAddress + Offsets.PlayerBase + 0x68);
             _zmBotListBase = _memory.Read<IntPtr>(_zmBotBase + 0x8);
 
+            if (_playerPedPtr == IntPtr.Zero || _zmGlobalBase == IntPtr.Zero || _zmBotBase == IntPtr.Zero || _zmBotListBase == IntPtr.Zero)
+            {
+                _console.WriteLine("Make sure you are inside a match before you press start.", Brushes.Red);
+                return false;
+            }
 
-            _console.WriteLine($"playerPedPtr: {_playerPedPtr}");
-            _console.WriteLine($"zmGlobalBase: {_zmGlobalBase}");
-            _console.WriteLine($"zmBotBase: {_zmBotBase}");
-            _console.WriteLine($"zmBotListBase: {_zmBotListBase}");
+            _console.WriteLine($"playerPedPtr: {_playerPedPtr}", Brushes.Green);
+            _console.WriteLine($"zmGlobalBase: {_zmGlobalBase}", Brushes.Green);
+            _console.WriteLine($"zmBotBase: {_zmBotBase}", Brushes.Green);
+            _console.WriteLine($"zmBotListBase: {_zmBotListBase}", Brushes.Green);
+            _console.WriteLine($"Attached: BaseAddress: {_baseAddress}", Brushes.Green);
 
-            _console.WriteLine($"Attached: BaseAddress: {_baseAddress}");
+            return true;
         }
     }
 }

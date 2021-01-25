@@ -112,5 +112,10 @@ namespace ColdWarZombieTrainer.Features
         {
             _memory.Write<int>(false, id, _baseAddress + Offsets.PlayerBase, (IntPtr)Offsets.PlayerCompPtr.SetWeaponID /*+ 0x40*/);
         }
+
+        public void AutomaticWeaponSwitch()
+        {
+
+        }
     }
 }

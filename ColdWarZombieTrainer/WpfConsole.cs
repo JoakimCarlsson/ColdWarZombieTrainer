@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace ColdWarZombieTrainer
@@ -12,9 +13,10 @@ namespace ColdWarZombieTrainer
             Console = consoleTextBox;
         }
 
-        public void WriteLine(string text)
+        public void WriteLine(string text, SolidColorBrush color)
         {
             Console.Text += $"\n[{DateTime.Now:T}] {text}";
+            Console.Foreground = color;
             Console.ScrollToEnd();
         }
 

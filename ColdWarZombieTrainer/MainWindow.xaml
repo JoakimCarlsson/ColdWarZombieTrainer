@@ -39,7 +39,7 @@
         <Button Grid.Row="0" Content="Start" HorizontalAlignment="Left" VerticalAlignment="Center" Height="35" Width="66" Name="StartButton" Click="StartButton_Click" Margin="738,0,0,0"/>
 
         <Grid Width="auto" Height="auto" Grid.Row="1">
-                  <Grid.RowDefinitions>
+            <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -59,16 +59,16 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <CheckBox Grid.Column="0" Content="God Mode" Name="GodModeCheckBox" HorizontalAlignment="Left"  VerticalAlignment="Center" Checked="GodModeEnable" Unchecked="GodModeDisable" Height="22" Margin="10,0,0,0"/>
-            <CheckBox Grid.Row="1" Grid.Column="0" Content="Speed Hack" Name="SpeedHackCheckBox" HorizontalAlignment="Left"  VerticalAlignment="Center" Checked="SpeedHackEnabled" Unchecked="SpeedHackDisable" Height="23" Margin="10,0,0,0"/>
+            <CheckBox Grid.Column="0" Content="God Mode" Name="GodModeCheckBox" HorizontalAlignment="Left"  VerticalAlignment="Center" Checked="GodModeEnable" Unchecked="GodModeDisable" Height="22" Margin="10,0,0,0" IsEnabled="False"/>
+            <CheckBox Grid.Row="1" Grid.Column="0" Content="Speed Hack" Name="SpeedHackCheckBox" HorizontalAlignment="Left"  VerticalAlignment="Center" Checked="SpeedHackEnabled" Unchecked="SpeedHackDisable" Height="23" Margin="10,0,0,0" IsEnabled="False"/>
             <Slider Grid.Row="1" Grid.Column="1" Name="SpeedHackValueSlider" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" Maximum="10" Minimum="1" Height="22" Background="{x:Null}" Orientation="Horizontal" TickPlacement="None"/>
-            <CheckBox Grid.Row="2" Grid.Column="0" Content="Infinite Money  " Name="MoneyHackCheckBox" HorizontalAlignment="Left" Width="101" Checked="InfiniteMoneyHack" Unchecked="InfiniteMoneyDisable" Height="23" Margin="10,1,0,2"/>
-            <CheckBox Grid.Row="3" Grid.Column="0" Content="Infinite Ammo" Name="InfiniteAmmoCheckBox"  HorizontalAlignment="Left"  VerticalAlignment="Center" Width="101" Checked="InfiniteAmmoEnable" Unchecked="InfiniteAmmoDisable" Height="23" Margin="10,0,0,0"/>
-            <CheckBox Grid.Row="6" Grid.Column="0" Content="Rapid Fire" HorizontalAlignment="Left"  VerticalAlignment="Center" Margin="10,0,0,0" Checked="RapidFireEnabled" Unchecked="RapidFireDisable"/>
-            <CheckBox Grid.Row="7" Grid.Column="0" Content="Always Crit / Headshot Only" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="10,0,0,0" Checked="HeadShotOnlyEnabled" Unchecked="HeadShotOnlyDisable"/>
-            <CheckBox Grid.Row="8" Grid.Column="0" Content="Thermal Vision" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="10,0,0,0" Checked="InfraredEnable" Unchecked="InfraredDisable"/>
-            <CheckBox Grid.Row="9" Grid.Column="0" Content="Auto Switch Weapon. (Not Implemented)" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="10,0,0,0"/>
-            <Button Grid.Row="1" Grid.Column="3" Height="25px" Width="100px"  Content="Set Weapon" HorizontalAlignment="Left" VerticalAlignment="Top" Name="ChangeWeaponButton" Click="ChangeWeaponButton_Click"/>
+            <CheckBox Grid.Row="2" Grid.Column="0" Content="Infinite Money  " Name="MoneyHackCheckBox" HorizontalAlignment="Left" Width="101" Checked="InfiniteMoneyHack" Unchecked="InfiniteMoneyDisable" Height="23" Margin="10,1,0,2" IsEnabled="False"/>
+            <CheckBox Grid.Row="3" Grid.Column="0" Content="Infinite Ammo" Name="InfiniteAmmoCheckBox"  HorizontalAlignment="Left"  VerticalAlignment="Center" Width="101" Checked="InfiniteAmmoEnable" Unchecked="InfiniteAmmoDisable" Height="23" Margin="10,0,0,0" IsEnabled="False"/>
+            <CheckBox Grid.Row="6" Grid.Column="0" Content="Rapid Fire" Name="RapidFireCheckBox" HorizontalAlignment="Left"  VerticalAlignment="Center" Margin="10,0,0,0" Checked="RapidFireEnabled" Unchecked="RapidFireDisable" IsEnabled="False"/>
+            <CheckBox Grid.Row="7" Grid.Column="0" Content="Always Crit / Headshot Only" Name="AlwaysCritCheckBox" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="10,0,0,0" Checked="HeadShotOnlyEnabled" Unchecked="HeadShotOnlyDisable" IsEnabled="False"/>
+            <CheckBox x:Name="ThermalVisonCheckBox" Grid.Row="8" Grid.Column="0" Content="Thermal Vision" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="10,0,0,0" Checked="InfraredEnable" Unchecked="InfraredDisable" IsEnabled="False"/>
+            <CheckBox x:Name="AutoSwitchWeaponCheckBox" Grid.Row="9" Grid.Column="0" Content="Auto Switch Weapon. (Not Implemented)" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="10,0,0,0" IsEnabled="False"/>
+            <Button Grid.Row="1" Grid.Column="3" Height="25px" Width="100px"  Content="Set Weapon" HorizontalAlignment="Left" VerticalAlignment="Top" Name="ChangeWeaponButton" Click="ChangeWeaponButton_Click" IsEnabled="False"/>
             <ComboBox Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="127,0,0,0" Name="WeaponIdComboBox"/>
             <Label Grid.Row="2" Grid.Column="3"  Content="Weapon: MyWeapon" Grid.ColumnSpan="2" Name="MyWeaponLabel"/>
         </Grid>
@@ -85,10 +85,10 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <CheckBox Grid.Column="0" Content="Instant Kill (1hp zombies)" Name="InstantKill" HorizontalAlignment="Left"  VerticalAlignment="Center" Checked="InstantKillEnable" Unchecked="InstantKillDisable" Height="23" Margin="10,0,0,0"/>
-            <CheckBox Grid.Row="1" Grid.Column="0" Content="Teleport Zombies Too Crosshair" Name="TeleportZombieCheckBox" HorizontalAlignment="Left"  VerticalAlignment="Center" Checked="TeleportZombiesEnabled" Unchecked="TeleportZombiesDisable" Height="23" Margin="10,0,0,0"/>
-            <CheckBox Grid.Row="2" Grid.Column="0" Content="Teleport Zombies Too Position" Name="TeleportZombiePositionCheckBox" HorizontalAlignment="Left"  VerticalAlignment="Center" Checked="TeleportZombiesPosEnabled" Unchecked="TeleportZombiesPosDisabled" Height="23" Margin="10,0,0,0"/>
-            <Button Grid.Row="2" Grid.Column="1" Height="25px" Width="100px"  Content="Set Position" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Click="SetPosition"/>
+            <CheckBox Grid.Column="0" Content="Instant Kill (1hp zombies)" x:Name="InstantKillCheckBox" HorizontalAlignment="Left"  VerticalAlignment="Center" Checked="InstantKillEnable" Unchecked="InstantKillDisable" Height="23" Margin="10,0,0,0" IsEnabled="False"/>
+            <CheckBox Grid.Row="1" Grid.Column="0" Content="Teleport Zombies Too Crosshair" Name="TeleportZombieCheckBox" HorizontalAlignment="Left"  VerticalAlignment="Center" Checked="TeleportZombiesEnabled" Unchecked="TeleportZombiesDisable" Height="23" Margin="10,0,0,0" IsEnabled="False"/>
+            <CheckBox Grid.Row="2" Grid.Column="0" Content="Teleport Zombies Too Position" Name="TeleportZombiePositionCheckBox" HorizontalAlignment="Left"  VerticalAlignment="Center" Checked="TeleportZombiesPosEnabled" Unchecked="TeleportZombiesPosDisabled" Height="23" Margin="10,0,0,0" IsEnabled="False"/>
+            <Button x:Name="SetPositionbutton" Grid.Row="2" Grid.Column="1" Height="25px" Width="100px"  Content="Set Position" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Click="SetPosition" IsEnabled="False"/>
             <Label Grid.Row="2" Grid.Column="2" Name="PositionLabel" Content="Set Position: [0,0,0]"/>
         </Grid>
 
@@ -102,13 +102,13 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <CheckBox Grid.Row="0" Grid.Column="0" Content="XP Modifier" Name="XpModiferCheckBox" HorizontalAlignment="Center" VerticalAlignment="Center"  Checked="XpModiferEnabled" Unchecked="XpModiferDisabled"/>
+            <CheckBox Grid.Row="0" Grid.Column="0" Content="XP Modifier" Name="XpModiferCheckBox" HorizontalAlignment="Center" VerticalAlignment="Center"  Checked="XpModiferEnabled" Unchecked="XpModiferDisabled" IsEnabled="False"/>
             <Slider Grid.Row="1" Grid.Column="0" Name="XpModiferSlider"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="700" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" Maximum="1000" Minimum="1" Height="22" Orientation="Horizontal" TickPlacement="None"/>
 
-            <CheckBox Grid.Row="2" Grid.Column="0" Content="Weapon XP Modifier" Name="GunXpModiferCheckBox" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="349,0,0,0" Checked="GunXpModiferEnabled" Unchecked="GunXpModiferDisabled"/>
+            <CheckBox Grid.Row="2" Grid.Column="0" Content="Weapon XP Modifier" Name="GunXpModiferCheckBox" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="349,0,0,0" Checked="GunXpModiferEnabled" Unchecked="GunXpModiferDisabled" IsEnabled="False"/>
             <Slider Grid.Row="3" Grid.Column="0" Name="GunModiferSlider" HorizontalAlignment="Center" VerticalAlignment="Center" Width="700" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" Maximum="1000" Minimum="1" Height="22" Orientation="Horizontal" TickPlacement="None"/>
 
-            <CheckBox Grid.Row="4" Grid.Column="0" Content="TimeScale Modifier (Use Me If Retard)" Name="TimeScaleModiferCheckBox" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="301,0,0,0" Checked="TimeScaleEnabled" Unchecked="TimeScaleDisabled"/>
+            <CheckBox Grid.Row="4" Grid.Column="0" Content="TimeScale Modifier (Use Me If Retard)" Name="TimeScaleModiferCheckBox" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="301,0,0,0" Checked="TimeScaleEnabled" Unchecked="TimeScaleDisabled" IsEnabled="False"/>
             <Slider Grid.Row="5" Grid.Column="0" Name="TimeScaleModiferSlider"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="700" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" Maximum="10" Minimum="1" Height="22" Orientation="Horizontal" TickPlacement="None" />
         </Grid>
 
