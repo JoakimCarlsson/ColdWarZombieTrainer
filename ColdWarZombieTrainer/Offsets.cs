@@ -6,7 +6,7 @@ namespace ColdWarZombieTrainer
     {
         public static int PlayerBase = 0xFC297B8;
         public static int ZMXPScaleBase = 0xFC517B0;
-        public static int TimeScaleBase = 0xECF9C74/* + 0x7C*/;
+        public static int TimeScaleBase = 0xECF9C74 + 0x7C;
 
         public static class PlayerCompPtr
         {
