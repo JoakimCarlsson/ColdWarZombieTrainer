@@ -204,8 +204,8 @@ namespace ColdWarZombieTrainer
 
         private void GunXpModiferEnabled(object sender, RoutedEventArgs e)
         {
-            _console.WriteLine("XP Multiplier Started", Brushes.Green);
-            _core.XpMultiplier.GunXpMultiplier((float)XpModiferSlider.Value);
+            _console.WriteLine("Gun XP Multiplier Started", Brushes.Green);
+            _core.XpMultiplier.GunXpMultiplier((float)GunModiferSlider.Value);
         }
 
         private void GunXpModiferDisabled(object sender, RoutedEventArgs e)
