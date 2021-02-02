@@ -288,8 +288,8 @@ namespace ColdWarZombieTrainer
         private void ChangeWeaponButton_Click(object sender, RoutedEventArgs e)
         {
             _console.WriteLine("Weapon Changed", Brushes.Green);
-            KeyValuePair<string, int> weapon = (KeyValuePair<string, int>)WeaponIdComboBox.SelectedItem;
-            _core.MiscFeatures.SetWeapon(weapon.Value);
+            KeyValuePair<int, string> weapon = (KeyValuePair<int, string>)WeaponIdComboBox.SelectedItem;
+            _core.MiscFeatures.SetWeapon(weapon.Key);
             MyWeaponLabel.Content = $"Weapon: {WeaponIdComboBox.Text}";
         }
     }
