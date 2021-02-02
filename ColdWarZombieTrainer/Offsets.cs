@@ -21,6 +21,13 @@ namespace ColdWarZombieTrainer
             public static int Name = 0x5BDA;
             public static int CurrentUsedWeaponID = 0x28;
             public static int SetWeaponID = 0xB0;
+
+            public static int CritKill1 = 0x10cc;
+            public static int CritKill2 = 0x10d0;
+            public static int CritKill3 = 0x10e4;
+            public static int CritKill4 = 0x10e8;
+            public static int CritKill5 = 0x10c4;
+            public static int CritKill6 = 0x10c8;
         }
 
 

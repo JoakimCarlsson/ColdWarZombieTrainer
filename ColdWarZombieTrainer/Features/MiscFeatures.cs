@@ -228,8 +228,8 @@ namespace ColdWarZombieTrainer.Features
         {
             if (KeyUtils.GetKeyDown(0x1))
             {
-                _memory.Write(false, 0, _baseAddress + Offsets.PlayerBase, (IntPtr)Offsets.PlayerCompPtr.RapidFire1);
-                _memory.Write(false, 0, _baseAddress + Offsets.PlayerBase, (IntPtr)Offsets.PlayerCompPtr.RapidFire2);
+                _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr)Offsets.PlayerCompPtr.RapidFire1);
+                _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr)Offsets.PlayerCompPtr.RapidFire2);
             }
         }
 
@@ -237,14 +237,14 @@ namespace ColdWarZombieTrainer.Features
         {
             if (!_critOnly)
             {
+                //wtf is this shite, copy pate much?
                 _critOnly = !_critOnly;
-                //todo fix me, probaly does not work.
-                _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr)4300);
-                _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr)4304);
-                _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr)4324);
-                _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr)4328);
-                _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr)4292);
-                _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr)4296);
+                _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr) Offsets.PlayerCompPtr.CritKill1);
+                _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr) Offsets.PlayerCompPtr.CritKill2);
+                _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr) Offsets.PlayerCompPtr.CritKill3);
+                _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr) Offsets.PlayerCompPtr.CritKill4);
+                _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr) Offsets.PlayerCompPtr.CritKill5);
+                _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr) Offsets.PlayerCompPtr.CritKill6);
             }
             else
             {

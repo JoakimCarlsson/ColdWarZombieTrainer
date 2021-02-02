@@ -23,6 +23,7 @@ namespace ColdWarZombieTrainer
         private bool _teleportZombies;
         private bool _rapidFire;
         private bool _teleportZombiesLocation;
+        private bool _critOnly;
 
 
         public MainWindow()
@@ -127,8 +128,8 @@ namespace ColdWarZombieTrainer
                     if (_teleportZombiesLocation)
                         _core.ZombieHack.TeleportZombies(false);
 
-                    //if (_critOnly)
-                    //    _core.MiscFeatures.CritOnly();
+                    if (_critOnly)
+                        _core.MiscFeatures.CritOnly();
                 }
                 catch (Exception exception)
                 {
@@ -254,12 +255,14 @@ namespace ColdWarZombieTrainer
         private void HeadShotOnlyEnabled(object sender, RoutedEventArgs e)
         {
             _console.WriteLine("Head Shot Only Enabled", Brushes.Green);
+            _critOnly = true;
             _core.MiscFeatures.CritOnly();
         }
 
         private void HeadShotOnlyDisable(object sender, RoutedEventArgs e)
         {
             _console.WriteLine("Head Shot Only Disabled", Brushes.Green);
+            _critOnly = false;
             _core.MiscFeatures.CritOnly();
         }
 
