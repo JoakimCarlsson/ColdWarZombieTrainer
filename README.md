@@ -18,4 +18,7 @@ Cold War Zombie Trainer
 * Weapon Switch. 
 
 ### TODO
-One Shot Gold
+* One Shot Gold
+
+## Screenshots
+![Text](https://i.imgur.com/UvmnwrO.png)
