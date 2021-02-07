@@ -100,8 +100,6 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <CheckBox Grid.Row="0" Grid.Column="0" Content="XP Modifier" Name="XpModiferCheckBox" HorizontalAlignment="Center" VerticalAlignment="Center"  Checked="XpModiferEnabled" Unchecked="XpModiferDisabled" IsEnabled="False"/>
@@ -109,9 +107,6 @@
 
             <CheckBox Grid.Row="2" Grid.Column="0" Content="Weapon XP Modifier" Name="GunXpModiferCheckBox" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="349,0,0,0" Checked="GunXpModiferEnabled" Unchecked="GunXpModiferDisabled" IsEnabled="False"/>
             <Slider Grid.Row="3" Grid.Column="0" Name="GunModiferSlider" HorizontalAlignment="Center" VerticalAlignment="Center" Width="700" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" Maximum="1000" Minimum="1" Height="22" Orientation="Horizontal" TickPlacement="None"/>
-
-            <CheckBox Grid.Row="4" Grid.Column="0" Content="TimeScale Modifier (Use Me If Retard)" Name="TimeScaleModiferCheckBox" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="301,0,0,0" Checked="TimeScaleEnabled" Unchecked="TimeScaleDisabled" IsEnabled="False"/>
-            <Slider Grid.Row="5" Grid.Column="0" Name="TimeScaleModiferSlider"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="700" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" Maximum="10" Minimum="1" Height="22" Orientation="Horizontal" TickPlacement="None" />
         </Grid>
 
         <Grid Width="auto" Height="225" Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Center">

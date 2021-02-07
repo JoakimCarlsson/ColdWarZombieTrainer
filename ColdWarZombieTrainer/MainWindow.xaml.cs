@@ -71,7 +71,6 @@ namespace ColdWarZombieTrainer
             SetPositionbutton.IsEnabled = true;
             XpModiferCheckBox.IsEnabled = true;
             GunXpModiferCheckBox.IsEnabled = true;
-            TimeScaleModiferCheckBox.IsEnabled = true;
             ChangeWeaponButton.IsEnabled = true;
             OneShotGold.IsEnabled = true;
         }
@@ -224,18 +223,6 @@ namespace ColdWarZombieTrainer
         {
             _console.WriteLine("XP Multiplier disabled", Brushes.Green);
             _core.XpMultiplier.GunXpMultiplier(1f);
-        }
-
-        private void TimeScaleEnabled(object sender, RoutedEventArgs e)
-        {
-            _console.WriteLine("Time Scaled Speed Enabled", Brushes.Green);
-            _core.SpeedMultiplier.SetTimeScale((float)TimeScaleModiferSlider.Value);
-        }
-
-        private void TimeScaleDisabled(object sender, RoutedEventArgs e)
-        {
-            _console.WriteLine("Time Scaled Speed Disabled", Brushes.Green);
-            _core.SpeedMultiplier.SetTimeScale(1f);
         }
 
         private void InfraredEnable(object sender, RoutedEventArgs e)
