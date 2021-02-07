@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using BlueRain;
@@ -13,10 +14,11 @@ namespace ColdWarZombieTrainer.Features
 
         private bool _infraredVision;
         private bool _critOnly;
+        private bool _stupidFlagThatNeedsTooGetRefactored = true;
+        private Queue _weaponQue;
 
         public Dictionary<int, string> weapons = new Dictionary<int, string>
         {
-            {0, "Remove Weapon"},
             {1, "Default Weapon"},
             {2, "Stoner 63"},
             {3, "M82"},
@@ -92,9 +94,6 @@ namespace ColdWarZombieTrainer.Features
             {119, "Big Punch(Granade)"},
             {121, "Special ?"},
             {123, "Cruise Missile"},
-            {124, "Cruise Missile"},
-            {125, "Reset to 0"},
-            {131, "Reset to 0"},
             {135, "1911"},
             {136, "Frag Granade"},
             {145, "Snowball"},
@@ -116,13 +115,9 @@ namespace ColdWarZombieTrainer.Features
             {179, "Fire Bomb 2"},
             {181, "Explosion without Damage"},
             {182, "Explosion without Effects"},
-            {186, "Explosion without Effects"},
             {206, "Road Rage"},
             {207, "Field Upgrade: Frost Blast"},
-            {208, "Field Upgrade: Aether Shroud"},
             {209, "Field Upgrade: IDN"},
-            {210, "Field Upgrade: Aether Shroud"},
-            {211, "Field Upgrade: Aether Shroud"},
             {212, "AUG - M3NT"},
             {213, "Unamed Weapon NoDamage"},
             {214, "Shotgun Shells"},
@@ -203,6 +198,7 @@ namespace ColdWarZombieTrainer.Features
         };
 
 
+
         public MiscFeatures(IntPtr baseAddress, NativeMemory memory)
         {
             _baseAddress = baseAddress;
@@ -214,13 +210,15 @@ namespace ColdWarZombieTrainer.Features
             if (!_infraredVision)
             {
                 _infraredVision = !_infraredVision;
-                _memory.Write<byte>(false, 0x10, _baseAddress + Offsets.PlayerBase, (IntPtr)Offsets.PlayerCompPtr.InfraredVision);
+                _memory.Write<byte>(false, 0x10, _baseAddress + Offsets.PlayerBase,
+                    (IntPtr) Offsets.PlayerCompPtr.InfraredVision);
 
             }
             else
             {
                 _infraredVision = !_infraredVision;
-                _memory.Write<byte>(false, 0x0, _baseAddress + Offsets.PlayerBase, (IntPtr)Offsets.PlayerCompPtr.InfraredVision);
+                _memory.Write<byte>(false, 0x0, _baseAddress + Offsets.PlayerBase,
+                    (IntPtr) Offsets.PlayerCompPtr.InfraredVision);
             }
         }
 
@@ -228,8 +226,8 @@ namespace ColdWarZombieTrainer.Features
         {
             if (KeyUtils.GetKeyDown(0x1))
             {
-                _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr)Offsets.PlayerCompPtr.RapidFire1);
-                _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr)Offsets.PlayerCompPtr.RapidFire2);
+                _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr) Offsets.PlayerCompPtr.RapidFire1);
+                _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr) Offsets.PlayerCompPtr.RapidFire2);
             }
         }
 
@@ -245,6 +243,8 @@ namespace ColdWarZombieTrainer.Features
                 _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr) Offsets.PlayerCompPtr.CritKill4);
                 _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr) Offsets.PlayerCompPtr.CritKill5);
                 _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr) Offsets.PlayerCompPtr.CritKill6);
+                _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr) Offsets.PlayerCompPtr.CritKill7);
+                _memory.Write(false, -1, _baseAddress + Offsets.PlayerBase, (IntPtr) Offsets.PlayerCompPtr.CritKill8);
             }
             else
             {
@@ -254,12 +254,33 @@ namespace ColdWarZombieTrainer.Features
 
         public void SetWeapon(int id)
         {
-            _memory.Write<int>(false, id, _baseAddress + Offsets.PlayerBase, (IntPtr)Offsets.PlayerCompPtr.SetWeaponID /*+ 0x40*/);
+            _memory.Write<int>(false, id, _baseAddress + Offsets.PlayerBase, (IntPtr) Offsets.PlayerCompPtr.SetWeaponID /*+ 0x40*/);
         }
 
         public void AutomaticWeaponSwitch()
         {
+            SetQueue();
+            int killCount = _memory.Read<int>(false, _baseAddress + Offsets.PlayerBase, (IntPtr) Offsets.PlayerCompPtr.KillCount);
 
+            if (killCount % 5 == 0)
+            {
+                SetWeapon((int)_weaponQue.Peek());
+                _weaponQue.Dequeue();
+            }
+        }
+
+        private void SetQueue()
+        {
+            if (_stupidFlagThatNeedsTooGetRefactored)
+            {
+                _weaponQue = new Queue();
+                foreach (var weaponId in weapons.Keys)
+                {
+                    _weaponQue.Enqueue(weaponId);
+                }
+
+                _stupidFlagThatNeedsTooGetRefactored = false;
+            }
         }
     }
 }

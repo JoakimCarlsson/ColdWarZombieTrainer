@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
         xmlns:local="clr-namespace:ColdWarZombieTrainer"
         mc:Ignorable="d"
-        Title="Tranny Trainer" Height="720" Width="827"
+        Title="Tranny Trainer" Height="760" Width="827"
         ResizeMode="NoResize">
 
     <Grid Loaded="OnLoaded">
@@ -49,7 +49,8 @@
                 <RowDefinition Height="26" />
                 <RowDefinition Height="26" />
                 <RowDefinition Height="26   " />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="26" />
+                <RowDefinition Height="26" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -67,7 +68,8 @@
             <CheckBox Grid.Row="6" Grid.Column="0" Content="Rapid Fire" Name="RapidFireCheckBox" HorizontalAlignment="Left"  VerticalAlignment="Center" Margin="10,0,0,0" Checked="RapidFireEnabled" Unchecked="RapidFireDisable" IsEnabled="False"/>
             <CheckBox Grid.Row="7" Grid.Column="0" Content="Always Crit / Headshot Only" Name="AlwaysCritCheckBox" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="10,0,0,0" Checked="HeadShotOnlyEnabled" Unchecked="HeadShotOnlyDisable" IsEnabled="False"/>
             <CheckBox x:Name="ThermalVisonCheckBox" Grid.Row="8" Grid.Column="0" Content="Thermal Vision" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="10,0,0,0" Checked="InfraredEnable" Unchecked="InfraredDisable" IsEnabled="False"/>
-            <CheckBox x:Name="AutoSwitchWeaponCheckBox" Grid.Row="9" Grid.Column="0" Content="Auto Switch Weapon. (Not Implemented)" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="10,0,0,0" IsEnabled="False"/>
+            <CheckBox x:Name="AutoSwitchWeaponCheckBox" Grid.Row="9" Grid.Column="0" Content="Auto Switch Weapon." HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="10,0,0,0" IsEnabled="False" Checked="AutoSwitchEnable" Unchecked="AutoSwitchDisable"/>
+            <CheckBox x:Name="OneShotGold" Grid.Row="10" Grid.Column="0" Content="One Shot Gold ( Not Implemented )" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="10,0,0,0" IsEnabled="False" Checked="OneShotGoldEnabled" Unchecked="OneShotGoldDisabled"/>
             <Button Grid.Row="1" Grid.Column="3" Height="25px" Width="100px"  Content="Set Weapon" HorizontalAlignment="Left" VerticalAlignment="Top" Name="ChangeWeaponButton" Click="ChangeWeaponButton_Click" IsEnabled="False"/>
             <ComboBox Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="127,0,0,0" Name="WeaponIdComboBox"/>
             <Label Grid.Row="2" Grid.Column="3"  Content="Weapon: MyWeapon" Grid.ColumnSpan="2" Name="MyWeaponLabel"/>

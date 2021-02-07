@@ -16,6 +16,7 @@ namespace ColdWarZombieTrainer
         public ZombieHack ZombieHack { get; private set; }
         public XpMultiplier XpMultiplier { get; private set; }
         public MiscFeatures MiscFeatures { get; private set; }
+        public CamoFeatures CamoFeatures { get; private set; }
 
         private const string GameTitle = "Call of Duty®: Black Ops Cold War";
         private const string ProcessName = "BlackOpsColdWar";
@@ -51,6 +52,7 @@ namespace ColdWarZombieTrainer
                 MiscFeatures = new MiscFeatures(_baseAddress, _memory);
                 ZombieHack = new ZombieHack(_playerPedPtr, _zmBotListBase, _zmGlobalBase, _memory);
                 XpMultiplier = new XpMultiplier(_baseAddress, _memory);
+                CamoFeatures = new CamoFeatures(_baseAddress, _zmBotListBase, _zmGlobalBase, _memory);
 
                 return true;
             }

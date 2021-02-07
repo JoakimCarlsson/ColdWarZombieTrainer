@@ -24,7 +24,10 @@ namespace ColdWarZombieTrainer
         private bool _rapidFire;
         private bool _teleportZombiesLocation;
         private bool _critOnly;
+        private bool _oneShotKill;
+        private bool _autoSwitch;
 
+        //todo refactor me.
 
         public MainWindow()
         {
@@ -61,7 +64,7 @@ namespace ColdWarZombieTrainer
             RapidFireCheckBox.IsEnabled = true;
             AlwaysCritCheckBox.IsEnabled = true;
             ThermalVisonCheckBox.IsEnabled = true;
-            //AutoSwitchWeaponCheckBox.IsEnabled = true;  Not Implemented.
+            AutoSwitchWeaponCheckBox.IsEnabled = true;
             InstantKillCheckBox.IsEnabled = true;
             TeleportZombieCheckBox.IsEnabled = true;
             TeleportZombiePositionCheckBox.IsEnabled = true;
@@ -70,6 +73,7 @@ namespace ColdWarZombieTrainer
             GunXpModiferCheckBox.IsEnabled = true;
             TimeScaleModiferCheckBox.IsEnabled = true;
             ChangeWeaponButton.IsEnabled = true;
+            OneShotGold.IsEnabled = true;
         }
 
         private void GodModeEnable(object sender, RoutedEventArgs e)
@@ -130,6 +134,13 @@ namespace ColdWarZombieTrainer
 
                     if (_critOnly)
                         _core.MiscFeatures.CritOnly();
+
+                    if (_oneShotKill)
+                        _core.CamoFeatures.OneShotGold();
+
+                    if(_autoSwitch)
+                        _core.MiscFeatures.AutomaticWeaponSwitch();
+
                 }
                 catch (Exception exception)
                 {
@@ -294,6 +305,30 @@ namespace ColdWarZombieTrainer
             KeyValuePair<int, string> weapon = (KeyValuePair<int, string>)WeaponIdComboBox.SelectedItem;
             _core.MiscFeatures.SetWeapon(weapon.Key);
             MyWeaponLabel.Content = $"Weapon: {WeaponIdComboBox.Text}";
+        }
+
+        private void OneShotGoldEnabled(object sender, RoutedEventArgs e)
+        {
+            _console.WriteLine("One Shot Gold Enabled", Brushes.Green);
+            _oneShotKill = true;
+        }
+
+        private void OneShotGoldDisabled(object sender, RoutedEventArgs e)
+        {
+            _console.WriteLine("One Shot Gold Disabled", Brushes.Red);
+            _oneShotKill = false;
+        }
+
+        private void AutoSwitchEnable(object sender, RoutedEventArgs e)
+        {
+            _console.WriteLine("AutoSwitch Enabled", Brushes.Green);
+            _autoSwitch = true;
+        }
+
+        private void AutoSwitchDisable(object sender, RoutedEventArgs e)
+        {
+            _console.WriteLine("AutoSwitch Disabled", Brushes.Red);
+            _autoSwitch = false;
         }
     }
 }
