@@ -6,13 +6,15 @@ namespace ColdWarZombieTrainer
     {
         public static int PlayerBase = 0x10A9FBC8;
         public static int ZMXPScaleBase = 0x10AC7BC0;
+        public static int XPScaleBase = 0xFD2C250;
+
 
         public static class PlayerCompPtr
         {
             public static int ArraySizeOffset = 0xB830;
             public static int InfraredVision = 0xE66;
             public static int GodMode = 0xE67;
-            public static int RunSpeed = 0x5C50;
+            public static int RunSpeed = 0x5C30;
             public static int Ammo = 0x13D4;
             public static int Points = 0x5D04;
             public static int RapidFire1 = 0xE6C;
