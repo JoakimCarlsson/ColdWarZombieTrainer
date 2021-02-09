@@ -4,9 +4,9 @@ namespace ColdWarZombieTrainer
 {
     class Offsets
     {
-        public static int PlayerBase = 0x10A9FBC8;
+        public static int PlayerBase = 0x10AA0BC8;
         public static int ZMXPScaleBase = 0x10AC7BC0;
-        public static int XPScaleBase = 0xFD2C250;
+        public static int XPScaleBase = 0x10AC8BC0;
 
 
         public static class PlayerCompPtr
