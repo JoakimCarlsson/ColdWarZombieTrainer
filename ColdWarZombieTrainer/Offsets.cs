@@ -4,18 +4,18 @@ namespace ColdWarZombieTrainer
 {
     class Offsets
     {
-        public static int PlayerBase = 0x10A9FBC8;
+        public static int PlayerBase = 0x10AA0BC8;
         public static int ZMXPScaleBase = 0x10AC7BC0;
         public static int XPScaleBase = 0xFD2C250;
-
+        public static int CMDbuffer = 0x124729D0;
 
         public static class PlayerCompPtr
         {
-            public static int ArraySizeOffset = 0xB830;
+            public static int ArraySizeOffset = 0xB900;
             public static int InfraredVision = 0xE66;
             public static int GodMode = 0xE67;
             public static int RunSpeed = 0x5C30;
-            public static int Ammo = 0x13D4;
+            public static int Ammo = 0x13D4; //0x1360 //0x13D4
             public static int Points = 0x5D04;
             public static int RapidFire1 = 0xE6C;
             public static int RapidFire2 = 0xE80;
@@ -59,8 +59,8 @@ namespace ColdWarZombieTrainer
 
         public class ZombieXpScaleBase
         {
-            public static int XPGun = 0x30; //XPGun_Offset
-            public static int XPUserReal = 0x28; //Real XPEP_RealAdd_Offset
+            public static int XPGun = 0x30;
+            public static int XPUserReal = 0x28;
         }
     }
 }

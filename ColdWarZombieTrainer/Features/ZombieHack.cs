@@ -35,8 +35,6 @@ namespace ColdWarZombieTrainer.Features
 
         public void TeleportZombies(bool TeleportCrosshair, int distance = 150)
         {
-            //this is the position we teleport the zombie too.
-            //we could just set newEnemyPosition too another vector3 and they would teleport too that.
             Vector3 newEnemyPosition = TeleportCrosshair ? NewEnemyPosition(distance) : _playerPosition;
 
             byte[] enemyPosBuffer = new byte[12];
