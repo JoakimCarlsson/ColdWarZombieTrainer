@@ -19,6 +19,3 @@ Cold War Zombie Trainer
 
 ### TODO
 * One Shot Gold
-
-## Screenshots
-![Text](https://i.imgur.com/UvmnwrO.png)
